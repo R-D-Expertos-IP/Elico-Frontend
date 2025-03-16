@@ -1,0 +1,411 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* header superior */
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.header__superior {
+  max-width: 1120px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px !important;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+  margin-left: 1rem;
+}
+
+/* Fin header */
+
+/* barra menu */
+
+.container__menu {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(#0039a5, #004de6);
+  padding: 0px 20px;
+}
+
+.menu {
+  max-width: 1030px;
+  margin: auto;
+  height: 100%;
+}
+
+strong {
+  font-size: 13px;
+}
+
+nav {
+  height: 100%;
+}
+
+nav>ul {
+  height: 100%;
+  display: flex;
+}
+
+nav ul li {
+  height: 100%;
+  list-style: none;
+  position: relative;
+}
+
+#selected {
+  position: relative;
+  /* Asegura que el pseudo-elemento se posicione correctamente */
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  /* Añade una transición suave para el escalado */
+}
+
+#selected:hover {
+  transform: scale(1.1);
+  /* Solo se aplica el efecto de escala al hacer hover */
+  /* background: linear-gradient(#2F8EE8, rgba(0, 106, 255, 0.552)); */
+  background-color: rgba(0, 106, 255, 0.822);
+  z-index: 1;
+} 
+
+nav>ul>li:first-child>a {
+  background-image: url('/img/hogar.png');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 20px 40px;
+  position: relative;
+  /* Asegura que la imagen de fondo esté posicionada dentro del enlace */
+  z-index: 1;
+  /* Esto asegura que el contenido esté por encima del pseudo-elemento */
+}
+
+nav>ul>li:first-child:hover>a {
+  background-image: url('/img/hogar.png');
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 1;
+  /* Asegura que el logo sigue visible por encima del fondo */
+}
+
+
+nav>ul>li>a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  color: white !important;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: all 300ms ease;
+}
+
+nav>ul>li>a:hover {
+  transform: scale(1.1);
+  background: linear-gradient(#2F8EE8, rgba(0, 106, 255, 0.552));
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Fin barra menu */
+
+/* submenu */
+
+nav ul li ul {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  top: 90px;
+  left: -5px;
+  padding: 14px 0px;
+  visibility: hidden;
+  opacity: 0;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  transition: all 300ms ease;
+  border-radius: 5px;
+}
+
+nav ul li:hover ul {
+  visibility: visible;
+  opacity: 1;
+  top: 70px;
+}
+
+nav ul li ul::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid white;
+  position: absolute;
+  top: -10px;
+  left: 20px;
+}
+
+nav ul li ul li a {
+  display: block;
+  color: gray;
+  font-weight: 600;
+  padding: 6px;
+  padding-left: 14px;
+  margin-top: 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: all 300ms ease;
+}
+
+nav ul li ul li a:hover {
+  background: linear-gradient(#2F8EE8, rgba(0, 106, 255, 0.552));
+  color: #fff;
+  transform: scale(1, 1);
+  padding-left: 30px;
+  font-size: 14px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Fin submenu */
+
+/* Elementos responsivos */
+.icon__menu {
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+  width: 26px;
+  height: 100%;
+  display: none;
+  align-items: center;
+}
+
+#check__menu {
+  display: none;
+}
+
+#label__check {
+  width: 26px;
+  height: 100%;
+  display: none;
+
+}
+
+/* Fin elementos responsivos */
+
+/* Contenido */
+
+main {
+  /* background: #f0f0f0; */
+  /* padding: 40px 20px; */
+  margin-top: 14rem;
+}
+
+.card {
+  max-width: 1200px;
+  height: auto;
+  margin: 20px auto;
+  padding: 40px;
+  background: #fff;
+}
+
+/* Fin contenido */
+
+@media screen and (max-width: 720px) {
+  /* .search input {
+        display: none;
+    } */
+
+  .header__superior {
+    padding: 10px;
+  }
+
+  /* .logo img {
+        width: 200px;
+    } */
+
+  nav>ul {
+    flex-direction: column;
+    background: linear-gradient(#0039a5, #004de6);
+    left: 0;
+    top: 158px;
+    width: 100%;
+    height: 0px;
+    transition: all 300ms ease;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  nav>ul>li>a:hover {
+    transform: scale(1);
+  }
+
+  nav ul li ul {
+    left: 90px;
+  }
+
+  nav>ul>li:hover>ul {
+    top: 50px;
+  }
+
+  nav>ul>li:first-child a {
+    background-position: 20px;
+  }
+
+  #selected {
+    transform: scale(1);
+  }
+
+  /* Barra menu */
+
+  #label__check {
+    display: block;
+  }
+
+  .icon__menu {
+    display: flex;
+  }
+
+  /* # revisar y arreglar */
+  #check__menu:checked~nav>ul {
+    height: 400px;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  main {
+    margin-top: 15rem;
+  }
+}
+
+/* .profile img {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+} */
+
+.general_lista {
+  display: flex;
+  justify-content: space-around;
+}
+
+.h5,
+h5 {
+  font-size: 0;
+  color: #0a3754;
+}
+
+h6 {
+  color: gray;
+  font-size: 0.8rem;
+}
+
+/* Micro Menu */
+
+#micro ul>li>a:hover {
+  transform: scale(1.1);
+  background: linear-gradient(#2F8EE8, rgba(0, 106, 255, 0.552));
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+#micro ul li:hover ul {
+  visibility: visible;
+  opacity: 1;
+  top: 70px;
+}
+
+#micro ul li::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #fff;
+  position: absolute;
+  top: -11px;
+  left: 45px;
+}
+
+#micro ul li a:hover {
+  background: linear-gradient(#2F8EE8, rgba(0, 106, 255, 0.552));
+  color: #fff;
+  transform: scale(1, 1);
+  padding-left: 30px;
+  font-size: 14px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+#micro ul>li>a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  color: gray;
+  text-transform: uppercase;
+  font-size: 13px !important;
+  transition: all 300ms ease;
+  font-weight: 600;
+}
+
+.profile1 img {
+  width: 60px !important;
+  height: 60px !important;
+  justify-content: center !important;
+  text-align: center !important;
+  border-radius: 50%;
+}
+
+h5 {
+  color: gray;
+  font-size: 1.2rem;
+}
+
+.dropdown-toggle:hover {
+  color: #1272b3 !important;
+  transform: scale(1.1);
+}
+
+/* Activos de cada módulo */
+
+nav ul li a.active {
+  font-weight: bold !important;
+  color: white !important;
+  text-shadow:
+  0 0 3px rgba(173, 216, 230, 0.1),
+  0 0 6px rgba(173, 216, 230, 0.1),
+  0 0 9px rgba(173, 216, 230, 0.1),
+  0 0 12px rgba(173, 216, 230, 0.1),
+  0 0 15px rgba(173, 216, 230, 0.1),
+  0 0 18px rgba(173, 216, 230, 0.1),
+  0 0 21px rgba(173, 216, 230, 0.1);
+}
+
+nav ul li ul li a.active {
+  font-weight: bold !important;
+  color: white !important;
+  /* font-size: 13px !important; */
+  background: linear-gradient(#2F8EE8, rgba(0, 106, 255, 0.552));
+}

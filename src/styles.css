@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+.form-select {
+  color: #333;
+  border-radius: 4px;
+  border: 1px solid #33ccff !important;
+  min-height: 36px;
+  align-items: center;
+}
+
+/* Buscador */
+
+#buscador {
+  padding-left: 2.5rem !important;
+  border-color: #33ccff !important;
+}
+
+#icono_buscador {
+  top: 50% !important;
+  left: 20px !important;
+  transform: translateY(-50%) !important;
+  font-size: 20px !important;
+  background: linear-gradient(to right, #0039a5 50%, #004de6 50%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+
+#select_paginador {
+  color: #0039a5;
+  font-weight: 600;
+  border-color: #33ccff;
+  width: 5rem !important;
+}

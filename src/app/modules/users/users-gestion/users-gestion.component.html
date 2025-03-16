@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="card_titulo col-md-5">
+    <h4><i class="fa-solid fa-users" id="icono_titulos"></i>
+      Gestión de Usuarios</h4>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="row justify-content-between align-items-center p-3">
+      <div class="col-md-5 d-flex position-relative mb-3">
+        <input type="search" [(ngModel)]="buscador" class="form-control" id="buscador" placeholder="Buscar">
+        <i class="fas fa-search position-absolute" id="icono_buscador"></i>
+      </div>
+      <div class="col-md-2 mb-3">
+        <button (click)="newUser()"
+          class="btn btn-outline-primary btn-ms btn-block w-100">
+          <i class="fa-solid fa-circle-plus"></i> Crear
+        </button>
+      </div>
+      <div class="card col-md-3" style="visibility: hidden;"></div>
+      <div class="col-md-2 text-center mb-3">
+        <p class="mb-0"><i class="fa-solid fa-users" id="icono"></i> Total: <strong
+            id="numero_total">{{users.length}}</strong></p>
+      </div>
+    </div>
+    <div class="card_paginador mb-2 col-md">
+      <select class="form-select" id="select_paginador" (change)="numeroPaginas($event)">
+        <option *ngFor="let option of nPaginas" [value]="option" [selected]="option === totalPaginas">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+    <div class="scroll col-md-12">
+      <table class="table table-responsive">
+        <thead class="cont_head">
+          <tr>
+            <th>NOMBRE COMPLETO</th>
+            <th>CORREO ELECTRÓNICO</th>
+            <th>ESTADO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody class="cont_body">
+          <tr
+            *ngFor="let user of filtroUsers() | paginate: {itemsPerPage: totalPaginas, currentPage: page, id: 'users'}">
+
+            <td>
+              <span class="td_1">{{user.name}}</span>
+            </td>
+            <td>
+              <span class="td_2">{{user.email}}</span>
+            </td>
+
+            <td >
+              <button class="button_estado shadow" (click)="states(user.id)"
+                [ngStyle]="{ background: user.state == 1 ? 'linear-gradient(to top, #004de6 40%, #0039a5 60%)' : 'gray' }">
+                <i [class]="user.state == 1 ? 'fa-solid fa-user-check' : 'fa-solid fa-user-xmark'"></i>
+              </button>
+            </td>
+            <td>
+              <div class="row justify-content-center text-center py-3">
+                <div class="card_icono col-md-1 mb-2 d-flex text-center align-items-center justify-content-center">
+                  <i  (click)="editUser(user)" tooltip="Editar" class="fa-solid fa-pen-to-square"
+                    id="table_icon_edit"></i>
+                </div>
+                <div class="card_icono col-md-1 mb-2 d-flex text-center align-items-center justify-content-center">
+                  <i class="fa-solid fa-eye" tooltip="Detalle" id="table_icon_detail"></i>
+                </div>
+                <div class="card_icono col-md-1 mb-2 d-flex text-center align-items-center justify-content-center">
+                  <i  tooltip="Cambiar Contraseña" class="fa-solid fa-lock-open"
+                    id="table_icon_password"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-between text-center p-3">
+    <div class="paginador_bajo col-md-3 p-3" *ngIf="users.length"><span><strong>Mostrando
+        </strong>
+        <strong class="paginador_bajo_numeros">{{
+          (page - 1) * totalPaginas + 1 }} <strong class="paginador_bajo">-</strong> {{
+          (page * totalPaginas < users.length) ? (page * totalPaginas) : users.length }} <strong class="paginador_bajo">
+            de</strong>
+        {{ users.length }}</strong></span>
+    </div>
+    <pagination-controls class="paginador_controles col-md-5" id="users" (pageChange)="page =$event"
+      previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page 5 de 10">
+    </pagination-controls>
+  </div>
+</div>

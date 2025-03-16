@@ -1,0 +1,58 @@
+<header>
+  <div class="header__superior">
+    <div class="logo">
+
+    </div>
+    <div class="row justify-content-center p-2">
+      <div class="profile1 col-md-3  justify-content-center"
+        style="border: none; border-radius: 20px; margin-top: 10px; display: flex;">
+        <img class="shadow" src="/img/perfil.png" onError="this.src='/img/perfil.png'">
+
+      </div>
+      <div class="dropdown col-md-8">
+        <a class="btn btn-outline-secondary dropdown-toggle text-center justify-content-center p-2" href="#"
+          role="button" data-bs-toggle="dropdown"
+          style="border: none; color:#0039a5; background-color: transparent; display:block;" aria-expanded="false">
+          <strong style="font-size: 14px;"> Juan Carlos </strong>
+          <p style="font-size: 12px;"> Administrador</p>
+        </a>
+        <div class="micro-menu" id="micro">
+          <ul class="dropdown-menu shadow" style="border: none; width: 15rem;">
+            <li><a class="dropdown-item" href="estadisticas"><i class="fa-solid fa-user col-md-2"
+                  style="color:#0039a5; margin-right: 5px;"></i>
+                Mi Perfil</a></li>
+
+            <li><a class="dropdown-item" href="/"><i class="fa-solid fa-right-from-bracket col-md-2"
+                  style="color:#0039a5; margin-right: 5px;"></i>
+                Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container__menu">
+    <div class="menu">
+      <input type="checkbox" id="check__menu">
+      <label for="check__menu" id="label__check"><i class="fas fa-bars icon__menu"></i></label>
+      <nav>
+        <ul>
+          <li><a id="selected" href="/gestiones"></a>
+          </li>
+          <li><a><strong>Usuarios</strong></a>
+            <ul>
+              <li><a href="gestiones/users/users-gestion"><i class="fa-solid fa-users" style="color:#0039a5;"></i>
+                  Usuarios</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
