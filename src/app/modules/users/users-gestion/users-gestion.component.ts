@@ -129,6 +129,4 @@ export class UsersGestionComponent implements OnInit {
   }
 
 
-
-
 }
