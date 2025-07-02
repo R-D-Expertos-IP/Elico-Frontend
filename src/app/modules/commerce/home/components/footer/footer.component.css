@@ -1,0 +1,53 @@
+ .social-link {
+   color: white;
+   transition: transform 0.3s ease, color 0.3s ease;
+ }
+
+ .social-link:hover {
+   color: #00B3BB;
+   transform: scale(1.3);
+ }
+
+ .social-icons a {
+   text-decoration: none;
+ }
+
+ @media (max-width: 768px) {
+   iframe {
+     height: 250px !important;
+   }
+ }
+
+ .pdf-button {
+   color: white;
+   text-decoration: none;
+   transition: transform 0.2s, color 0.3s;
+   padding: 0.5rem 1rem;
+   border-radius: 0.5rem;
+ }
+
+ .pdf-button:hover {
+   color: #00B3BB;
+   transform: scale(1.05);
+ }
+
+
+ .span1 {
+   color: #005CAB;
+   /* Cambia esto al color que prefieras */
+   font-weight: bold;
+   /* Opción para hacer el texto más destacado */
+   transition: transform 0.3s, color 0.3s;
+   /* Transiciones para el efecto */
+   text-shadow: 2px 2px 4px rgba(238, 238, 238, 0.2);
+ }
+
+ .text-secondary {
+  text-shadow: 2px 2px 4px rgba(238, 238, 238, 0.2);
+ }
+
+ .span_2 {
+   color: #808284 !important;
+   font-weight: 400 !important;
+   font-weight: bold !important;
+ }

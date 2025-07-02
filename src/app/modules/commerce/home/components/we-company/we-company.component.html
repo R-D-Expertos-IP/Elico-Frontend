@@ -1,0 +1,17 @@
+  <section class="timeline-section">
+    <h2 class="timeline-title">Nuestra Historia</h2>
+    <div class="timeline">
+      <div *ngFor="let item of timelineData; let i = index"
+        [ngClass]="['timeline-item', i % 2 === 0 ? 'left' : 'right', item.visible ? 'visible' : '']">
+        <div class="timeline-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="content">
+          <h3>{{ item.title }}</h3>
+          <ul>
+            <li *ngFor="let point of item.points">{{ point }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>

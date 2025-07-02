@@ -1,0 +1,155 @@
+.timeline-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(to right, #f0f2f5, rgb(235, 234, 234));
+}
+
+.timeline-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #203864;
+  margin-bottom: 4rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: #007bff;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.timeline-item {
+  width: 50%;
+  position: relative;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.8s ease;
+  z-index: 1;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-icon {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #00B3BB;
+  border: 3px solid #00B3BB;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  /* Centramos el contenido */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 👈 Centrado horizontal */
+  justify-content: center;
+  /* 👈 Centrado vertical si lo necesitas */
+  text-align: center;
+  /* 👈 Centra el texto */
+}
+
+.content:hover {
+  transform: scale(1.02);
+  background: #f1f9ff;
+  transition: all 0.3s ease-in-out;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  color: #203864;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  line-height: 1.4;
+  text-align: center;
+  width: 100%;
+}
+
+.content ul {
+  list-style: none;
+  padding-left: 0;
+  align-items: center;
+  /* 👈 Centra las viñetas */
+}
+
+.content ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 1rem;
+  color: #000000;
+  line-height: 1.5rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 0;
+  /* No se necesita ya que usamos flex */
+}
+
+.content ul li::before {
+  content: '✔';
+  color: #8FAADC;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 2.5rem;
+    text-align: left !important;
+  }
+
+  .timeline-icon {
+    left: 0;
+    transform: translateX(0);
+  }
+}

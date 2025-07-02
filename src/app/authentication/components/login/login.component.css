@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #0039a5;
+  background-color: #005CAB;
 } */
 
 .account-block {
@@ -43,13 +43,13 @@
 }
 
 .btn-theme {
-  background-color: #0039a5;
-  border-color: #0039a5;
+  background-color: #005CAB;
+  border-color: #005CAB;
   color: #fff;
 }
 
 .btn-theme:hover {
-  background-color: #3e55d4;
+  background-color: #203864;
   color: #fff;
 }
 

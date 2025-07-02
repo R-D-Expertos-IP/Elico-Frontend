@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { content } from './shared/routes/content-routes';
+import { HeaderComponent } from './modules/commerce/home/components/header/header.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 const routes: Routes = [
 
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/authentication/login',
+    redirectTo: '/commerce/home',
   },
   {
     path: 'gestiones',
@@ -18,9 +19,13 @@ const routes: Routes = [
 
   },
   {
-    path: 'authentication',
-    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
-  }
+    path: 'commerce',
+    loadChildren: () => import('./modules/commerce/home/home.module').then(m => m.HomeModule),
+  },
+  //  {
+  //   path: 'authentication',
+  //   loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
+  // }
 ];
 
 @NgModule({

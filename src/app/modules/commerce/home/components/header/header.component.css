@@ -1,0 +1,110 @@
+ .navbar {
+    background-color: rgb(235, 234, 234);
+    /* background-color: rgba(138, 140, 142, 0.175); */
+    /* Fondo inicial */
+    transition: background-color 0.5s, box-shadow 0.5s;
+    padding: 10px 20px;
+    /* Espaciado interno */
+  }
+  
+  .scrolled {
+    background-color: #feffff;
+    /* Color de fondo al hacer scroll */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* Sombra */
+  }
+  
+  .nav-link {
+    color: black;
+    /* Color inicial */
+    transition: transform 0.3s, color 0.3s;
+    /* Transiciones para el efecto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .nav-link:hover {
+    transform: scale(1.1);
+    /* Aumentar el tamaño */
+    background: #005CAB  !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .nav-item {
+    margin: 0 15px;
+  }
+  
+  .navbar-brand {
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Centrar verticalmente */
+  }
+  
+  .navbar-brand img {
+    margin-right: 12px; /* Espacio entre la imagen y el texto */
+  }
+  
+  .navbar-brand span {
+    color: #005CAB ; /* Cambia esto al color que prefieras */
+    font-weight: bold; /* Opción para hacer el texto más destacado */
+    transition: transform 0.3s, color 0.3s;
+    /* Transiciones para el efecto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .span_2 {
+    color: #808284 !important;
+    font-weight: 400 !important;
+    font-weight: bold !important;
+  }
+  
+  .navbar-toggler {
+    border: none; /* Sin borde */
+    background: transparent; /* Fondo transparente */
+  }
+  
+  .navbar-toggler:focus {
+    outline: none; /* Quitar el contorno predeterminado */
+    box-shadow: 0 0 0 2px transparent; /* Cambiar el color del borde al hacer foco */
+  }
+  
+  .navbar-toggler:active {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5); /* Cambiar el color del borde al presionar */
+  }
+
+
+  
+
+
+
+
+
+ .dropdown-menu.custom-dropdown {
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu.custom-dropdown a.dropdown-item {
+  color: #333;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Efecto de hover con ambos lados suaves */
+.dropdown-menu.custom-dropdown a.dropdown-item:hover {
+  background-color: #e7f0ff; /* Azul muy claro */
+  color: #005CAB; /* Azul intenso */
+  transform: translateX(6px);
+  box-shadow: inset 2px 0 0 #00B3BB;
+}
