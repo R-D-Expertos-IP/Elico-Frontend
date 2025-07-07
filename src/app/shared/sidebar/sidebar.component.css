@@ -38,7 +38,7 @@ header {
 .container__menu {
   width: 100%;
   height: 50px;
-  background: linear-gradient(#0039a5, #004de6);
+  background: linear-gradient(#005CAB, #203864);
   padding: 0px 20px;
 }
 
@@ -243,7 +243,7 @@ main {
 
   nav>ul {
     flex-direction: column;
-    background: linear-gradient(#0039a5, #004de6);
+    background: linear-gradient(#005CAB, #203864);
     left: 0;
     top: 158px;
     width: 100%;

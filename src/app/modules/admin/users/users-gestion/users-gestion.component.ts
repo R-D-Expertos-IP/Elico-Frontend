@@ -4,11 +4,11 @@ import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
 import { UsersGestionService } from './services/users-gestion.service';
 import { IUser } from './interface/users-gestion.interface';
-import { ErrorService } from '../../../shared/services/error.service';
+import { ErrorService } from '../../../../shared/services/error.service';
 // import { SweetAlertService } from '../../../shared/services/sweetAlert.service';
-import { IPermisionValue, IPermissionAction } from '../../../shared/interface/permission.interface';
-import { PermissionService } from '../../../shared/services/permission.service';
-import { environment } from '../../../../environments/environment';
+import { IPermisionValue } from '../../../../shared/interface/permission.interface';
+import { PermissionService } from '../../../../shared/services/permission.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-users-gestion',

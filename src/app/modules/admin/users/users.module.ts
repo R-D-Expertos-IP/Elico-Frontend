@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { UserRouterModule } from './users.routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../../shared/shared.module';
-import { UsersGestionComponent } from './users-gestion/users-gestion.component';
 import { UsersGestionService } from './users-gestion/services/users-gestion.service';
+import { SharedModule } from '../../../shared/shared.module';
+import { UsersGestionComponent } from './users-gestion/users-gestion.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
@@ -21,7 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SharedModule,
     // BsDropdownModule.forRoot(),
     // NgSelectModule,
-    NgxPaginationModule,
+    NgxPaginationModule
     //   TooltipModule.forRoot()
   ],
   declarations: [
