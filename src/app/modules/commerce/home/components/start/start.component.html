@@ -1,0 +1,112 @@
+<div id="carouselExampleIndicators" class="carousel slide" style="margin-top: 5rem;" data-ride="carousel"
+  data-interval="4000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/img/prueba1.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div class="row justify-content-center m-2">
+  <div class="cards-container">
+    
+  <!-- TÍTULO DENTRO DEL CONTENEDOR -->
+  <div class="cards-title-wrapper animate-fadeInUp">
+    <h2 class="gradient-title">{{ solucionesText }}</h2>
+  </div>
+
+  <!-- FLIP CARDS -->
+  <div class="flip-card rounded">
+    <div class="flip-card-inner">
+      <div class="flip-card-front bg-consulting">
+        <i class="fas fa-comments"></i>
+        Generalización
+      </div>
+      <div class="flip-card-back">
+        <p>Te brindamos apoyo estratégico personalizado para tus proyectos.</p>
+        <button class="conocenos-btn" onclick="location.href='/servicio-asesoria'">Ver Servicio</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card rounded">
+    <div class="flip-card-inner">
+      <div class="flip-card-front bg-maintenance">
+        <i class="fas fa-tools"></i>
+        Energía
+      </div>
+      <div class="flip-card-back">
+        <p>Atendemos fallas técnicas y mantenimientos preventivos.</p>
+        <button class="conocenos-btn" onclick="location.href='/servicio-mantenimiento'">Ver Servicio</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card rounded">
+    <div class="flip-card-inner">
+      <div class="flip-card-front bg-training">
+        <i class="fas fa-chalkboard-teacher"></i>
+        Automatización
+      </div>
+      <div class="flip-card-back">
+        <p>Cursos presenciales y virtuales en múltiples áreas técnicas.</p>
+        <button class="conocenos-btn" onclick="location.href='/servicio-capacitaciones'">Ver Servicio</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card rounded">
+    <div class="flip-card-inner">
+      <div class="flip-card-front bg-audit">
+        <i class="fas fa-search"></i>
+        Digitalización
+      </div>
+      <div class="flip-card-back">
+        <p>Evaluamos y garantizamos el cumplimiento de normativas.</p>
+        <button class="conocenos-btn" onclick="location.href='/servicio-auditorias'">Ver Servicio</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="video-section">
+  <div class="video-content-wrapper">
+    <!-- CARD DE TEXTO -->
+    <div class="text-card animate-fadeInUp">
+      <div class="text-card-inner">
+           <h2 class="gradient-title">{{ fullTitle }}</h2>
+    <p class="video-description">{{ fullDesc }}</p>
+        <div class="btn-wrapper">
+          <button class="conocenos-btn" (click)="goToNosotros()">Conócenos</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO EMBEBIDO DE YOUTUBE -->
+    <div class="video-card animate-fadeInUp">
+      <div class="responsive-iframe-container">
+        <iframe
+          src="https://www.youtube.com/embed/lgrtGDwxJ-M?si=rSmZ24dnRd6gBlGV"
+          title="Automatización Industrial"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+

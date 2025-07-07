@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/commerce/home',
+    redirectTo: '/commerce/home/start',
   },
   {
     path: 'gestiones',
