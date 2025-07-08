@@ -24,12 +24,12 @@ export const content: Routes = [
 
   {
     path: '',
-    redirectTo: '/gestiones/home',
+    redirectTo: '/commerce/home/start',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: '/gestiones/home',
+    redirectTo: '/commerce/home/start',
     pathMatch: 'full'
   }
 ];

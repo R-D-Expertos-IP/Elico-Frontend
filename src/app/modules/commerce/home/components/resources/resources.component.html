@@ -1,0 +1,24 @@
+<div class="container my-5">
+  <br>
+  <div class="cards-title-wrapper animate-fadeInUp mb-4 text-center">
+    <h2 class="gradient-title">{{ recursosText }}</h2>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 col-md-3 mb-4" *ngFor="let card of pdfCards">
+      <div class="card h-100 text-center border-0">
+        <div class="row g-0 justify-content-center">
+          <div class="col-12">
+            <a [href]="card.pdfUrl" target="_blank" class="d-block">
+              <img [src]="card.image" class="img-fluid" alt="{{ card.title }}">
+            </a>
+          </div>
+        </div>
+        <div class="card-body border-top py-2">
+          <a [href]="card.pdfUrl" target="_blank" class="text-decoration-underline text-dark">
+            <h5 class="card-title fw-bold text-uppercase fs-6 mb-0">{{ card.title }}</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,175 @@
-  <section class="timeline-section">
-    <h2 class="timeline-title">Nuestra Historia</h2>
-    <div class="timeline">
-      <div *ngFor="let item of timelineData; let i = index"
-        [ngClass]="['timeline-item', i % 2 === 0 ? 'left' : 'right', item.visible ? 'visible' : '']">
-        <div class="timeline-icon">
-          <i class="fas fa-briefcase"></i>
+<section class="timeline-section">
+  <br>
+  <h2 class="timeline-title text-center">Conoce a Elico Group</h2>
+  <p class="lead text-center text-muted mx-auto mb-5" style="max-width: 900px;">
+    Nuestra actividad principal es brindar soluciones de ingeniería especializada en el ramo de la automatización, apoyados en un amplio portafolio de equipos y soluciones de nuestros aliados tecnológicos y en nuestra gran experiencia.
+  </p>
+  
+  <div class="timeline">
+    <div *ngFor="let item of infocards; let i = index"
+      [ngClass]="['timeline-item', (i % 2 === 0 ? 'left' : 'right'), item.visible !== false ? 'visible' : '']">
+      
+      <div class="timeline-icon">
+        <i [ngClass]="item.icon"></i>
+      </div>
+      
+      <div class="content">
+        <h3>{{ item.title }}</h3>
+        <ul>
+          <li *ngFor="let point of item.points">{{ point }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="habilidades-modernas">
+  <div class="container">
+    <!-- TÍTULO DENTRO DEL CONTENEDOR -->
+  <div class="cards-title-wrapper animate-fadeInUp">
+    <h2 class="gradient-title">{{ solucionesText }}</h2>
+  </div>
+
+    <div class="habilidades-content">
+    
+      <div class="card-text animate-fadeIn">
+        <p>
+          Elico inició sus operaciones en 1979 y se consolidó formalmente en el 2013 como Elico Group S.A.S.
+        </p>
+        <p>
+          Somos un integrador de sistemas en automatización industrial con más de 46 años de experiencia...
+        </p>
+        <p>
+          Nuestra oferta de productos y servicios atiende a los clientes en distintos sectores.
+        </p>
+      </div>
+
+     
+      <div class="skills-bars">
+        <div class="bar-container">
+          <span class="label">46 años de servicio continuo</span>
+          <div class="progress-bar" data-width="43%">
+            <div class="bar">
+              <span class="bar-value" data-value="43">0</span>
+            </div>
+          </div>
         </div>
-        <div class="content">
-          <h3>{{ item.title }}</h3>
-          <ul>
-            <li *ngFor="let point of item.points">{{ point }}</li>
-          </ul>
+
+        <div class="bar-container">
+          <span class="label">Más de 600 proyectos desarrollados</span>
+          <div class="progress-bar" data-width="100%">
+            <div class="bar">
+              <span class="bar-value" data-value="600">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bar-container">
+          <span class="label">Más de 15 años certificados en Siemens</span>
+          <div class="progress-bar" data-width="25%">
+            <div class="bar">
+              <span class="bar-value" data-value="15">0</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+<section class="timeline-section">
+  <div class="cards-title-wrapper animate-fadeInUp">
+    <h2 class="gradient-title">{{ historiaText }}</h2>
+  </div>
+
+  <div class="timeline">
+    <div *ngFor="let item of timelineData; let i = index"
+      [ngClass]="['timeline-item', i % 2 === 0 ? 'left' : 'right', item.visible ? 'visible' : '']">
+      <div class="timeline-icon">
+        <i [class]="item.icon"></i>
+      </div>
+      <div class="content">
+        <h3>{{ item.title }}</h3>
+        <ul>
+          <li *ngFor="let point of item.points">{{ point }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container my-5">
+  <br>
+  <div class="cards-title-wrapper animate-fadeInUp">
+    <h2 class="gradient-title">{{ documentosText }}</h2>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-4 mb-4" *ngFor="let card of certificadoCards">
+      <div class="card h-100 text-center border-0">
+        <a [href]="card.pdfUrl" target="_blank">
+          <img [src]="card.image" class="card-img-top img-fluid" alt="{{ card.title }}">
+        </a>
+        <div class="card-body border-top pt-3">
+          <a [href]="card.pdfUrl" target="_blank" class="text-decoration-underline text-dark">
+            <h5 class="card-title fw-bold text-uppercase mb-0">{{ card.title }}</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modulos propuestos  -->
+<div class="row justify-content-center">
+  <div class="col-md-6 mb-4" *ngFor="let card of cards; let i = index">
+    <div class="card shadow" style="max-width: 600px; margin: 0 auto;">
+      <img [src]="card.image" class="card-img-top" [alt]="card.title">
+      <div class="card-body text-center">
+        
+        <h5 class="card-title mb-3">{{ card.title }}</h5>
+        
+        <p class="card-text">
+          {{ card.descShort }}
+          <span class="collapse" [id]="'collapseCardText' + i">
+            {{ card.descFull }}
+          </span>
+        </p>
+        
+        <a
+          class="btn btn-link p-0"
+          data-bs-toggle="collapse"
+          [attr.href]="'#collapseCardText' + i"
+          role="button"
+          (click)="toggleExpand(card)">
+          {{ card.expanded ? 'Leer menos' : 'Leer más' }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>
+
+    <!-- Botón flotante de WhatsApp -->
+<a
+  href="https://api.whatsapp.com/send?phone=573136492489"
+  target="_blank"
+  class="btn btn-success rounded-circle d-flex justify-content-center align-items-center"
+  style="
+    width: 90px;
+    height: 90px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  "
+>
+  <i class="fab fa-whatsapp fs-1 text-white"></i>
+</a>
+
+
