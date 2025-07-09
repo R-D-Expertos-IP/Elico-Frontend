@@ -7,6 +7,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { PqrsfComponent } from './components/pqrsf/pqrsf.component';
+import { EnergyComponent } from './components/energy/energy.component';
+
+
 const routes: Routes = [
   {
     path: 'home',
@@ -42,6 +45,11 @@ const routes: Routes = [
         path: 'pqrsf',
         component: PqrsfComponent,
       },
+
+      {
+        path: 'energy',
+        component: EnergyComponent,
+      }
 
     ]
   }

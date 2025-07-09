@@ -14,6 +14,7 @@ import { ResourcesComponent } from './components/resources/resources.component';
 import { StartComponent } from './components/start/start.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PqrsfComponent } from './components/pqrsf/pqrsf.component';
+import { EnergyComponent } from './components/energy/energy.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PqrsfComponent } from './components/pqrsf/pqrsf.component';
     BlogComponent,
     ResourcesComponent,
     ContactComponent,
-    PqrsfComponent
+    PqrsfComponent,
+    EnergyComponent
   ]
 })
 export class HomeModule { }

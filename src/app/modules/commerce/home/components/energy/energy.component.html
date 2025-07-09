@@ -1,0 +1,191 @@
+<section class="timeline-section">
+
+  <div class="container my-5">
+  <div class="card shadow p-3 zoom-hover rounded-4">
+    <div class="card-body">
+
+      <h2 class="gradient-title mb-4">
+        Integrador de Sistemas de Gestión Energética en Plantas Industriales de Colombia
+      </h2>  
+
+      <p class="text-center text-muted mx-auto mb-3" style="max-width: 900px;">
+        En Elico Group, nuestra área de Energía está dedicada a brindar soluciones avanzadas 
+        y estratégicas en automatización, electrificación y control de sistemas energéticos en 
+        centrales de generación y Subestaciones eléctricas.
+      </p>
+
+      <p class="text-center text-muted mx-auto mb-3" style="max-width: 900px;">
+        Nuestro enfoque combina ingeniería de alta calidad con tecnología de vanguardia, 
+        buscando la máxima eficiencia operativa.
+      </p>
+
+      <p class="text-center text-muted mx-auto mb-3" style="max-width: 900px;">
+        Acompañamos a nuestros clientes en cada fase del proyecto con soporte técnico 
+        especializado, garantizando el éxito y la continuidad de sus operaciones.
+      </p>
+
+      <div class="text-center mt-3">
+        <a
+          class="btn text-white px-3 py-3 fs-4 border-0"
+          style="
+            font-size: 28px;
+            background: linear-gradient(to right,#0056b3, #007bff );
+            text-decoration: none;
+            display: inline-block;
+          "
+          href="/commerce/home/contact">
+          Enviar Solicitud
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <!-- Componente linea de tiempo -->
+  <br>
+  <h2 class="gradient-title mb-4">Nuestros Servicios</h2>
+  
+  <div class="timeline">
+    <div *ngFor="let item of serviciosCards; let i = index"
+      [ngClass]="['timeline-item', (i % 2 === 0 ? 'left' : 'right'), item.visible !== false ? 'visible' : '']">
+      
+      <div class="timeline-icon">
+        <i [ngClass]="item.icon"></i>
+      </div>
+      
+      <div class="content">
+        <h3>{{ item.title }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card: Beneficios -->
+  <div class="container my-5">
+
+  <!-- TÍTULO FUERA DE LA CARD -->
+  <h2 class="gradient-title mb-5">
+    Beneficios que se obtienen con los Sistemas de Gestión Energética en Plantas Industriales
+  </h2>
+
+  <div class="row g-4">
+    <!-- Item 1 -->
+    <div class="col-md-4">
+      <div class="card shadow h-100 zoom-hover text-center p-4">
+        <i class="fa-solid fa-chart-line fa-3x text-primary mb-3"></i>
+        <h5 class="fw-bold mt-2">Máxima Eficiencia y Productividad</h5>
+        <p class="text-muted">
+          Los dispositivos de control tenemos la capacidad de tomar mejores
+          decisiones y de forma más rápida al proporcionar información operacional.
+        </p>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="col-md-4">
+      <div class="card shadow h-100 zoom-hover text-center p-4">
+        <i class="fa-solid fa-circle-info fa-3x text-primary mb-3"></i>
+        <h5 class="fw-bold mt-2">Uso Eficiente de los Recursos</h5>
+        <p class="text-muted">
+          Fomentar un uso más eficiente de los recursos para maximizar los activos
+          y la producción, simplificar tareas e integrar estrategias.
+        </p>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="col-md-4">
+      <div class="card shadow h-100 zoom-hover text-center p-4">
+        <i class="fa-solid fa-plus-circle fa-3x text-primary mb-3"></i>
+        <h5 class="fw-bold mt-2">Aumento de la Producción</h5>
+        <p class="text-muted">
+          Con los sistemas de automatización se logra el aumento del valor de la
+          producción, reduciendo costos y mejorando la seguridad.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  <!-- Card: Texto + Imagen -->
+ <div class="container my-5">
+  <div class="card shadow p-4 zoom-hover">
+    <div class="card-body">
+      <div class="row align-items-stretch" style="min-height: 100%;">
+        <!-- Texto -->
+        <div class="col-md-6 mb-4 mb-md-0 d-flex flex-column justify-content-center">
+          <h6 class="gradient-title">
+            {{ bloqueTitulo }}
+          </h6>
+          <p class="text-muted mt-3">
+            {{ bloqueTexto }}
+          </p>
+        </div>
+
+        <!-- Imagen -->
+        <div class="col-md-6 p-0">
+          <div class="h-100 w-100">
+            <img
+              [src]="bloqueImagen"
+              alt="Planta industrial"
+              class="img-fluid rounded w-100 h-100"
+              style="object-fit: cover;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Proyectos destacados -->
+
+  <div class="container-fluid my-5">
+  <h2 class="gradient-title mb-4">
+    Proyectos Destacados
+  </h2>
+
+  <div class="row g-4">
+    <div class="col-md-3" *ngFor="let proyecto of proyectoText">
+      <div class="card h-100 shadow zoom-hover">
+        <img
+          [src]="proyecto.image"
+          alt="Proyecto destacado"
+          class="card-img-top img-fluid"
+          style="max-height: 250px; object-fit: contain;"
+        />
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-primary">{{ proyecto.title }}</h5>
+          <p class="card-text mb-2"><strong>{{ proyecto.location }}</strong></p>
+          <p class="card-text"><strong>Solución:</strong> {{ proyecto.solution }}</p>
+          <p class="card-text"><strong>Impacto:</strong> {{ proyecto.impact }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Logros -->
+  <div class="container my-5">
+  <h2 class="gradient-title mb-4">{{ logrosData.title }}</h2>
+  
+  <p class="lead text-muted">{{ logrosData.intro }}</p>
+
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-3" *ngFor="let item of logrosData.items">
+      <div class="card h-100 shadow zoom-hover p-3">
+        <div class="card-body">
+          <p class="card-text text-muted mb-0">
+            {{ item }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <p class="lead text-muted">{{ logrosData.conclusion }}</p>
+</div>
+
+</section>
