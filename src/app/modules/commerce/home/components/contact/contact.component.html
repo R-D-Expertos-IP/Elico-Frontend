@@ -1,165 +1,170 @@
-
 <div class="container mt-5 py-5" id="tnosotros">
   <div class="row justify-content-center">
-    <div class="card col-md-8 border-0">
+    <div class="card col-md-8 border-0" style="font-size: 0.95rem;">
 
       <!-- Título con degradado e ícono -->
       <div class="cards-title-wrapper animate-fadeInUp mb-3">
         <div class="d-flex justify-content-center align-items-center gap-2">
-          <i class="fa-solid fa-users-rectangle" style="font-size: 28px; color: gray"></i>
+          <i class="fa-solid fa-users-rectangle text-info" style="font-size: 24px;"></i>
           <h2 class="gradient-title mb-0">{{ contactText }}</h2>
         </div>
       </div>
 
-      
-      <div class="card-header text-center text-white fs-4 py-3" style="background: linear-gradient(to right, gray );">
+      <div class="card-header text-center text-white fs-5 py-3" 
+        style="background: linear-gradient(to right, #0056b3, #007bff);">
         Formulario Trabaja con Nosotros
       </div>
 
-      <div class="card-body shadow rounded">
-        <form [formGroup]="contactForm" class="p-3 col-md-12 text-center">
+      <div class="card shadow rounded">
+        <form [formGroup]="contactForm" class="p-3 col-md-12">
 
           <!-- Nombre y Apellidos -->
-          <div class="mb-3 text-center">
-            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-4">
-              <i class="fa-solid fa-user"></i>
-              Nombre y Apellidos
-            </label>
-            <input
-              type="text"
-              formControlName="name"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid': contactForm.get('name')?.touched && contactForm.get('name')?.invalid
-              }">
-            <div *ngIf="
-                contactForm.get('name')?.touched &&
-                contactForm.get('name')?.hasError('required')
-              " class="text text-danger">
-              Este campo es obligatorio
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-user text-info"></i>
+                Nombre
+              </label>
+              <input
+                type="text"
+                formControlName="firstName"
+                class="form-control text-center fs-6"
+                [ngClass]="{
+                  'is-invalid': contactForm.get('firstName')?.touched && contactForm.get('firstName')?.invalid
+                }">
+              <div *ngIf="
+                contactForm.get('firstName')?.touched &&
+                contactForm.get('firstName')?.hasError('required')
+              " class="text text-danger fs-6">
+                Este campo es obligatorio
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-3 mt-md-0">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-user text-info"></i>
+                Apellidos
+              </label>
+              <input
+                type="text"
+                formControlName="lastName"
+                class="form-control text-center fs-6"
+                [ngClass]="{
+                  'is-invalid': contactForm.get('lastName')?.touched && contactForm.get('lastName')?.invalid
+                }">
+              <div *ngIf="
+                contactForm.get('lastName')?.touched &&
+                contactForm.get('lastName')?.hasError('required')
+              " class="text text-danger fs-6">
+                Este campo es obligatorio
+              </div>
             </div>
           </div>
-
-          <!-- Empresa >
-          <div class="mb-3 text-center">
-            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-4">
-              <i class="fa-solid fa-building"></i>
-              Empresa
-            </label>
-            <input
-              type="text"
-              formControlName="company"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid': contactForm.get('company')?.touched && contactForm.get('company')?.invalid
-              }">
-            <div *ngIf="
-                contactForm.get('company')?.touched &&
-                contactForm.get('company')?.hasError('required')
-              " class="text text-danger">
-              Este campo es obligatorio
-            </div>
-          </div>
-
-          < Cargo >
-          <div class="mb-3 text-center">
-            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-4">
-              <i class="fa-solid fa-briefcase"></i>
-              Cargo
-            </label>
-            <input
-              type="text"
-              formControlName="position"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid': contactForm.get('position')?.touched && contactForm.get('position')?.invalid
-              }">
-            <div *ngIf="
-                contactForm.get('position')?.touched &&
-                contactForm.get('position')?.hasError('required')
-              " class="text text-danger">
-              Este campo es obligatorio
-            </div>
-          </div> -->
 
           <!-- Correo -->
-          <div class="mb-3 text-center">
-            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-4">
-              <i class="fa-solid fa-envelope"></i>
+          <div class="mb-3">
+            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+              <i class="fa-solid fa-envelope text-info"></i>
               Correo Electrónico
             </label>
             <input
               type="email"
               formControlName="email"
-              class="form-control"
+              class="form-control text-center fs-6"
               [ngClass]="{
                 'is-invalid': contactForm.get('email')?.touched && contactForm.get('email')?.invalid
               }">
             <div *ngIf="
                 contactForm.get('email')?.touched &&
                 contactForm.get('email')?.hasError('required')
-              " class="text text-danger">
+              " class="text text-danger fs-6">
               El correo es obligatorio
             </div>
             <div *ngIf="
                 contactForm.get('email')?.touched &&
                 contactForm.get('email')?.hasError('email')
-              " class="text text-danger">
+              " class="text text-danger fs-6">
               Ingresa un correo válido
             </div>
           </div>
 
-          <!-- Celular -->
-          <div class="mb-3 text-center">
-            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-4">
-              <i class="fa-solid fa-phone"></i>
-              Celular
-            </label>
-            <input
-              type="text"
-              formControlName="phone"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid': contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid
-              }">
-            <div *ngIf="
-                contactForm.get('phone')?.touched &&
-                contactForm.get('phone')?.hasError('required')
-              " class="text text-danger">
-              Este campo es obligatorio
+          <!-- Celular y Área de Interés -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-phone text-info"></i>
+                Celular
+              </label>
+              <input
+                type="text"
+                formControlName="phone"
+                class="form-control text-center fs-6"
+                [ngClass]="{
+                  'is-invalid': contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid
+                }">
+              <div *ngIf="
+                  contactForm.get('phone')?.touched &&
+                  contactForm.get('phone')?.hasError('required')
+                " class="text text-danger fs-6">
+                Este campo es obligatorio
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-3 mt-md-0">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-layer-group text-info"></i>
+                Área de Interés
+              </label>
+              <input
+                type="text"
+                formControlName="interestArea"
+                class="form-control text-center fs-6"
+                [ngClass]="{
+                  'is-invalid': contactForm.get('interestArea')?.touched && contactForm.get('interestArea')?.invalid
+                }">
+              <div *ngIf="
+                  contactForm.get('interestArea')?.touched &&
+                  contactForm.get('interestArea')?.hasError('required')
+                " class="text text-danger fs-6">
+                Este campo es obligatorio
+              </div>
             </div>
           </div>
 
-          <!-- Área de Interés -->
-          <div class="mb-3 text-center">
-            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-4">
-              <i class="fa-solid fa-layer-group"></i>
-              Área de Interés
-            </label>
-            <input
-              type="text"
-              formControlName="interestArea"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid': contactForm.get('interestArea')?.touched && contactForm.get('interestArea')?.invalid
-              }">
-            <div *ngIf="
-                contactForm.get('interestArea')?.touched &&
-                contactForm.get('interestArea')?.hasError('required')
-              " class="text text-danger">
-              Este campo es obligatorio
+          <!-- Empresa y Cargo (opcionales) -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-building text-info"></i>
+                Empresa
+              </label>
+              <input
+                type="text"
+                formControlName="company"
+                class="form-control text-center fs-6">
+            </div>
+
+            <div class="col-md-6 mt-3 mt-md-0">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-briefcase text-info"></i>
+                Cargo
+              </label>
+              <input
+                type="text"
+                formControlName="position"
+                class="form-control text-center fs-6">
             </div>
           </div>
 
           <!-- Por qué nos visita -->
-          <div class="mb-3 text-center">
-            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-4">
-              <i class="fa-solid fa-comment-dots"></i>
+          <div class="mb-3">
+            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+              <i class="fa-solid fa-comment-dots text-info"></i>
               ¿Por qué nos visita?
             </label>
             <textarea
               formControlName="reasonVisit"
-              class="form-control"
+              class="form-control text-center fs-6"
               rows="3"
               [ngClass]="{
                 'is-invalid': contactForm.get('reasonVisit')?.touched && contactForm.get('reasonVisit')?.invalid
@@ -167,45 +172,103 @@
             <div *ngIf="
                 contactForm.get('reasonVisit')?.touched &&
                 contactForm.get('reasonVisit')?.hasError('required')
-              " class="text text-danger">
+              " class="text text-danger fs-6">
               Este campo es obligatorio
             </div>
           </div>
 
           <!-- CV -->
           <div class="row justify-content-center">
-            <div class="mb-4 col-md-10 text-center">
-              <label for="cv" class="form-label d-flex justify-content-center align-items-center gap-2 fs-4">
-                <i class="fa-solid fa-file-lines"></i>
+            <div class="mb-4 col-md-10">
+              <label for="cv" class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-file-lines text-info"></i>
                 Adjuntar Hoja de Vida (CV)
               </label>
               <input
                 type="file"
                 id="cv"
-                class="form-control"
+                class="form-control text-center fs-6"
                 (change)="onFileChange($event)">
               <div *ngIf="
                   contactForm.get('cv')?.touched &&
                   contactForm.get('cv')?.hasError('required')
-                " class="text text-danger">
+                " class="text text-danger fs-6">
                 Ingresa un archivo válido
               </div>
             </div>
           </div>
 
+          <!-- Condiciones de Uso -->
+          <div class="mb-3">
+            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+              <i class="fa-solid fa-file-contract text-info"></i>
+              Condiciones de Uso <span class="text-danger">*</span>
+            </label>
+
+            <p class="text-muted text-center fs-6">
+              He leído los términos de uso de mis datos personales y acepto la política de privacidad ofrecida por Elico Group.
+            </p>
+
+            <div class="d-flex justify-content-center">
+              <div class="form-check rounded p-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="termsConditions"
+                  formControlName="termsConditions">
+                <label class="form-check-label text-primary fs-6" for="termsConditions">
+                  Acepto las condiciones de uso
+                </label>
+              </div>
+            </div>
+
+            <div *ngIf="
+              contactForm.get('termsConditions')?.touched &&
+              contactForm.get('termsConditions')?.hasError('required')"
+              class="text text-danger text-center mt-2 fs-6">
+              Debes aceptar las condiciones de uso.
+            </div>
+          </div>
+
+          <!-- Publicidad -->
+          <div class="mb-3">
+            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+              <i class="fa-solid fa-bullhorn text-info"></i>
+              Publicidad
+            </label>
+
+            <p class="text-muted text-center fs-6">
+              Sí, deseo recibir información sobre noticias, promociones y eventos ofrecida por
+              <a href="https://www.elicogrpvao.wpengine.com/" target="_blank" class="text-info text-decoration-underline">
+                www.elicogrpvao.wpengine.com
+              </a>
+            </p>
+
+            <div class="d-flex justify-content-center">
+              <div class="form-check rounded p-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="receiveAds"
+                  formControlName="receiveAds">
+                <label class="form-check-label text-primary fs-6" for="receiveAds">
+                  Deseo recibir información
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón -->
           <div class="btn-wrapper text-center mt-3">
             <button
-              class="btn text-white px-3 py-3 fs-4 border-0"
-              style="
-                font-size: 28px;
-                background: linear-gradient(to right, gray);
-              "
+              class="btn text-white px-3 py-2 fs-5 border-0"
+              style="background: linear-gradient(to right, #0056b3, #007bff);"
               type="button"
               (click)="submitForm()">
               Enviar Solicitud
-              </button>
-            </div>
-          
+            </button>
+          </div>
+
         </form>
       </div>
     </div>

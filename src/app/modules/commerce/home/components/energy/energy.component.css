@@ -1,0 +1,128 @@
+.gradient-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #0056b3, #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  min-height: 60px;
+}
+
+/* CSS para linea de tiempo */
+
+.timeline-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(to right, #f0f2f5, rgb(235, 234, 234));
+}
+
+.timeline-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #203864;
+  margin-bottom: 4rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: #007bff;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.timeline-item {
+  width: 50%;
+  position: relative;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.8s ease;
+  z-index: 1;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-icon {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #00B3BB;
+  border: 3px solid #00B3BB;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  /* Centramos el contenido */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 👈 Centrado horizontal */
+  justify-content: center;
+  /* 👈 Centrado vertical si lo necesitas */
+  text-align: center;
+  /* 👈 Centra el texto */
+}
+
+
+/* Css para cards */
+
+
+.card {
+  
+  border: none;
+  flex: 1 1 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
+}
+

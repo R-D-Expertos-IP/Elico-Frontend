@@ -1,3 +1,10 @@
+
+.timeline-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(to right, #f0f2f5, rgb(235, 234, 234));
+}
+
+
 .gradient-title {
   font-size: 2.5rem;
   font-weight: bold;
@@ -9,6 +16,7 @@
   text-align: center;
   min-height: 60px;
 }
+
 
 /* Css para cards */
 
@@ -28,4 +36,3 @@
   transform: scale(1.03);
   box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
 }
-

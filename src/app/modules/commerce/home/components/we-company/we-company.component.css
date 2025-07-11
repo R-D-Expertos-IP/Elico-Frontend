@@ -1,3 +1,5 @@
+/* ------------------------------------------------------------------------------------------- */
+/* SECCIÓN TIMELINE GENERAL */
 .timeline-section {
   padding: 5rem 1rem;
   background: linear-gradient(to right, #f0f2f5, rgb(235, 234, 234));
@@ -11,23 +13,13 @@
   margin-bottom: 4rem;
 }
 
+/* ------------------------------------------------------------------------------------------- */
+/* TIMELINE VERTICAL CON ICONOS */
 .timeline {
   position: relative;
   max-width: 100%;
   margin: auto;
   padding: 2rem 0;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 6px;
-  height: 100%;
-  background: #007bff;
-  transform: translateX(-50%);
-  z-index: 0;
 }
 
 .timeline-item {
@@ -53,9 +45,11 @@
   left: 50%;
 }
 
+/* ------------------------------------------------------------------------------------------- */
+/* ICONO CENTRAL EN TIMELINE */
 .timeline-icon {
   position: absolute;
-  top: 20px;
+  top: -25px;
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
@@ -64,16 +58,79 @@
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
+/* ------------------------------------------------------------------------------------------- */
+/* TIMELINE GRID VERSION (SEGUNDA LINEA DE TIEMPO) */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  row-gap: 60px;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 3px);
+  width: 6px;
+  background: #007bff;
+  z-index: 0;
+}
+
+.timeline-row {
+  display: contents;
+}
+
+.timeline-cell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-cell {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.right-cell {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.center-cell {
+  flex-direction: column;
+}
+
+.timeline-card-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* IMAGEN EN CELDA DE TIMELINE */
+.timeline-cell img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* CARD DE CONTENIDO DE LA TIMELINE */
 .content {
-  background: white;
+  background: #fff;
   padding: 1.5rem 2rem;
   border-radius: 10px;
   position: relative;
@@ -81,38 +138,38 @@
   margin-top: 40px;
   width: 100%;
   box-sizing: border-box;
-  /* Centramos el contenido */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* 👈 Centrado horizontal */
   justify-content: center;
-  /* 👈 Centrado vertical si lo necesitas */
   text-align: center;
-  /* 👈 Centra el texto */
+  transition: all 0.3s ease-in-out;
+  min-height: 60px;
+  min-width: 100px;
 }
 
 .content:hover {
   transform: scale(1.02);
   background: #f1f9ff;
-  transition: all 0.3s ease-in-out;
 }
 
+/* TITULO DENTRO DE LA CARD */
 .content h3 {
   font-size: 1.5rem;
   color: #203864;
-  margin-bottom: 1rem;
-  margin-top: 0;
+  margin: 0 0 1rem 0;
   line-height: 1.4;
   text-align: center;
   width: 100%;
 }
 
+/* LISTA DENTRO DE LA CARD */
 .content ul {
   list-style: none;
   padding-left: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  /* 👈 Centra las viñetas */
 }
 
 .content ul li {
@@ -120,12 +177,10 @@
   align-items: flex-start;
   gap: 0.6rem;
   font-size: 1rem;
-  color: #000000;
+  color: #000;
   line-height: 1.5rem;
   margin-bottom: 0.8rem;
   position: relative;
-  padding-left: 0;
-  /* No se necesita ya que usamos flex */
 }
 
 .content ul li::before {
@@ -136,7 +191,10 @@
   margin-top: 0.1rem;
 }
 
-@media screen and (max-width: 768px) {
+/* ------------------------------------------------------------------------------------------- */
+/* RESPONSIVE TIMELINE (CELULARES) */
+@media (max-width: 768px) {
+  /* Primera línea de tiempo vertical */
   .timeline::before {
     left: 8px;
   }
@@ -152,8 +210,47 @@
     left: 0;
     transform: translateX(0);
   }
+
+  /* Segunda línea de tiempo (grid) */
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-grid::before {
+    display: none;
+  }
+
+  .timeline-cell {
+    grid-column: 1 / -1;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .left-cell,
+  .right-cell {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .timeline-icon {
+    left: 50% !important;
+    transform: translateX(-50%);
+  }
+
+  .timeline-cell img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    text-align: center;
+    margin-top: 2rem;
+  }
 }
 
+/* ------------------------------------------------------------------------------------------- */
+/* TITULOS GRADIENTES */
 .gradient-title {
   font-size: 2.5rem;
   font-weight: bold;
@@ -166,12 +263,8 @@
   min-height: 60px;
 }
 
-
-
-
-
-
-
+/* ------------------------------------------------------------------------------------------- */
+/* SECCIÓN HABILIDADES */
 .habilidades-modernas {
   background: linear-gradient(to right, #f0f2f5, #e4ebf5);
   padding: 4rem 2rem;
@@ -195,6 +288,12 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 768px) {
+  .habilidades-content {
+    flex-direction: column;
+  }
+}
+
 .card-text {
   background: white;
   border-radius: 16px;
@@ -216,6 +315,8 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* ------------------------------------------------------------------------------------------- */
+/* SKILLS BARS */
 .skills-bars {
   flex: 1 1 400px;
   display: flex;
@@ -258,7 +359,8 @@
   transition: width 2s ease-in-out;
 }
 
-
+/* ------------------------------------------------------------------------------------------- */
+/* ANIMATIONS */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -270,11 +372,20 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .habilidades-content {
-    flex-direction: column;
-  }
+/* ------------------------------------------------------------------------------------------- */
+/* GENERIC CARD STYLING */
+.card {
+  border: none;
+  flex: 1 1 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
 }
 
-
-
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
+  background-color: #fff;
+}

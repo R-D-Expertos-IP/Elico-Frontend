@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  ViewChild,
-  AfterViewInit,
-  
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -14,41 +7,52 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./pqrsf.component.css'],
 })
 export class PqrsfComponent {
-  pqrsText = "PQRSF";
+  pqrsText = 'PQRSF';
+  contactText = 'PQRSF';
   contactForm!: FormGroup;
-    contactText = 'PQRSF';
-  
-    constructor(private fb: FormBuilder) {}
-  
-    ngOnInit(): void {
-      this.contactForm = this.fb.group({
-        name: ['', Validators.required],
-        company: ['', Validators.required],
-        position: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        phone: ['', Validators.required],
-        interestArea: ['', Validators.required],
-        reasonVisit: ['', Validators.required],
-        cv: [null, Validators.required],
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.contactForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      documentType: ['', Validators.required],
+      documentNumber: ['', Validators.required],
+      company: [''], // Opcional
+      position: [''], // Opcional
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+      interestArea: ['', Validators.required],
+      reasonVisit: ['', Validators.required],
+      accept: [null, Validators.required],
+      cv: [null], // Puede o no ser obligatorio según tu lógica
+    });
+  }
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.contactForm.patchValue({
+        cv: file,
       });
     }
-  
-    onFileChange(event: any) {
-      const file = event.target.files[0];
-      if (file) {
-        this.contactForm.patchValue({
-          cv: file,
-        });
-      }
+  }
+
+  submitForm() {
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      return;
     }
-  
-    submitForm() {
-      if (this.contactForm.invalid) {
-        this.contactForm.markAllAsTouched();
-        return;
-      }
-      console.log('Formulario enviado:', this.contactForm.value);
-      
+    console.log('Formulario enviado:', this.contactForm.value);
+  }
+
+  onRadioClick(option: string): void {
+    const currentValue = this.contactForm.get('accept')?.value;
+    if (currentValue === option) {
+      this.contactForm.get('accept')?.setValue(null);
+    } else {
+      this.contactForm.get('accept')?.setValue(option);
     }
   }
-  
+}

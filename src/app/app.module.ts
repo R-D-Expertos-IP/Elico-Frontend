@@ -16,8 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     SharedModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(), // ToastrModule added
-    HttpClientModule,  // Añade esta línea
+    ToastrModule.forRoot(), 
+    HttpClientModule,  
   ],
   providers: [],
   bootstrap: [AppComponent]

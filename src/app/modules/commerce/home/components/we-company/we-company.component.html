@@ -1,11 +1,16 @@
+<!-- Linea de tiempo -->
 <section class="timeline-section">
   <br>
   <h2 class="timeline-title text-center">Conoce a Elico Group</h2>
   <p class="lead text-center text-muted mx-auto mb-5" style="max-width: 900px;">
     Nuestra actividad principal es brindar soluciones de ingeniería especializada en el ramo de la automatización, apoyados en un amplio portafolio de equipos y soluciones de nuestros aliados tecnológicos y en nuestra gran experiencia.
   </p>
-  
-  <div class="timeline">
+
+  <div class="timeline" style="position: relative;">
+    <div style="
+      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: #007bff;
+      z-index: 1;"></div>
+
     <div *ngFor="let item of infocards; let i = index"
       [ngClass]="['timeline-item', (i % 2 === 0 ? 'left' : 'right'), item.visible !== false ? 'visible' : '']">
       
@@ -13,7 +18,7 @@
         <i [ngClass]="item.icon"></i>
       </div>
       
-      <div class="content">
+      <div class="content card">
         <h3>{{ item.title }}</h3>
         <ul>
           <li *ngFor="let point of item.points">{{ point }}</li>
@@ -28,16 +33,20 @@
 
 
 
+<!-- Habilidades -->
+
+
 <section class="habilidades-modernas">
   <div class="container">
-    <!-- TÍTULO DENTRO DEL CONTENEDOR -->
+    
+  <!-- TÍTULO DENTRO DEL CONTENEDOR -->
   <div class="cards-title-wrapper animate-fadeInUp">
     <h2 class="gradient-title">{{ solucionesText }}</h2>
   </div>
 
     <div class="habilidades-content">
     
-      <div class="card-text animate-fadeIn">
+      <div class=" card card-text animate-fadeIn">
         <p>
           Elico inició sus operaciones en 1979 y se consolidó formalmente en el 2013 como Elico Group S.A.S.
         </p>
@@ -83,18 +92,20 @@
 </section>
 
 
-<section class="timeline-section">
-  <div class="cards-title-wrapper animate-fadeInUp">
+
+  <!-- <div class="cards-title-wrapper animate-fadeInUp">
     <h2 class="gradient-title">{{ historiaText }}</h2>
   </div>
 
   <div class="timeline">
     <div *ngFor="let item of timelineData; let i = index"
       [ngClass]="['timeline-item', i % 2 === 0 ? 'left' : 'right', item.visible ? 'visible' : '']">
+      
       <div class="timeline-icon">
         <i [class]="item.icon"></i>
       </div>
-      <div class="content">
+      
+      <div class="content card">
         <h3>{{ item.title }}</h3>
         <ul>
           <li *ngFor="let point of item.points">{{ point }}</li>
@@ -102,31 +113,89 @@
       </div>
     </div>
   </div>
-  <div class="container my-5">
-  <br>
+ -->
+
+<!-- Segunda linea de tiempo -->
+
+<section class="timeline-section">
   <div class="cards-title-wrapper animate-fadeInUp">
-    <h2 class="gradient-title">{{ documentosText }}</h2>
+    <h2 class="gradient-title">{{ historiaText }}</h2>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-4 mb-4" *ngFor="let card of certificadoCards">
-      <div class="card h-100 text-center border-0">
-        <a [href]="card.pdfUrl" target="_blank">
-          <img [src]="card.image" class="card-img-top img-fluid" alt="{{ card.title }}">
-        </a>
-        <div class="card-body border-top pt-3">
-          <a [href]="card.pdfUrl" target="_blank" class="text-decoration-underline text-dark">
-            <h5 class="card-title fw-bold text-uppercase mb-0">{{ card.title }}</h5>
+    <div class="timeline-grid">
+        <div *ngFor="let item of timelineData; let i = index" class="timeline-row">
+        
+        <!-- Columna izquierda -->
+        <div class="timeline-cell left-cell" *ngIf="i % 2 === 0">
+          <div class="timeline-card-wrapper">
+            <div class="timeline-icon">
+              <i [class]="item.icon"></i>
+            </div>
+            <div class="content card">
+              <h3>{{ item.title }}</h3>
+              <ul>
+                <li *ngFor="let point of item.points">{{ point }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-cell left-cell image-cell" *ngIf="i % 2 !== 0">
+          <img [src]="item.image" alt="Imagen de {{ item.title }}" />
+        </div>
+        
+        <!-- Columna central (solo línea azul, ya no lleva ícono) -->
+        <div class="timeline-cell center-cell"></div>
+
+        <!-- Columna derecha -->
+        <div class="timeline-cell right-cell image-cell" *ngIf="i % 2 === 0">
+          <img [src]="item.image" alt="Imagen de {{ item.title }}" />
+        </div>
+        <div class="timeline-cell right-cell" *ngIf="i % 2 !== 0">
+          <div class="timeline-card-wrapper">
+            <div class="timeline-icon">
+              <i [class]="item.icon"></i>
+            </div>
+            <div class="content card">
+              <h3>{{ item.title }}</h3>
+              <ul>
+                <li *ngFor="let point of item.points">{{ point }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  
+<!-- Documento tecnicos -->
+  <div class="container my-5">
+    <br>
+    <div class="cards-title-wrapper animate-fadeInUp">
+      <h2 class="gradient-title">{{ documentosText }}</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4 mb-4" *ngFor="let card of certificadoCards">
+        <div class="card h-100 text-center border-0">
+          <a [href]="card.pdfUrl" target="_blank">
+            <img [src]="card.image" class="card-img-top img-fluid" alt="{{ card.title }}">
           </a>
+          <div class="card-body border-top pt-3">
+            <a [href]="card.pdfUrl" target="_blank" class="text-decoration-underline text-dark">
+              <h5 class="card-title fw-bold text-uppercase mb-0">{{ card.title }}</h5>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  
 
-<!--Modulos propuestos  -->
+
+<!-- Módulos propuestos -->
 <div class="row justify-content-center">
   <div class="col-md-6 mb-4" *ngFor="let card of cards; let i = index">
-    <div class="card shadow" style="max-width: 600px; margin: 0 auto;">
+    <div class="card" style="max-width: 600px; margin: 0 auto;">
       <img [src]="card.image" class="card-img-top" [alt]="card.title">
       <div class="card-body text-center">
         
@@ -151,9 +220,10 @@
     </div>
   </div>
 </div>
-
-
 </section>
+
+
+
 
     <!-- Botón flotante de WhatsApp -->
 <a
@@ -161,15 +231,16 @@
   target="_blank"
   class="btn btn-success rounded-circle d-flex justify-content-center align-items-center"
   style="
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
     z-index: 9999;
+    font-size: 30px;
   "
 >
-  <i class="fab fa-whatsapp fs-1 text-white"></i>
+  <i class="fab fa-whatsapp text-white"></i>
 </a>
 
 
