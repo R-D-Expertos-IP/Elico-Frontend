@@ -8,6 +8,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { PqrsfComponent } from './components/pqrsf/pqrsf.component';
 import { EnergyComponent } from './components/energy/energy.component';
+import { DigitizationComponent } from './components/digitization/digitization.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,11 @@ const routes: Routes = [
       {
         path: 'energy',
         component: EnergyComponent,
+      },
+      
+      {
+        path: 'digitization',
+        component: DigitizationComponent,
       }
 
     ]

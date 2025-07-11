@@ -10,6 +10,8 @@
   min-height: 60px;
 }
 
+/* CSS para linea de tiempo */
+
 .timeline-section {
   padding: 5rem 1rem;
   background: linear-gradient(to right, #f0f2f5, rgb(235, 234, 234));
@@ -104,60 +106,23 @@
   /* 👈 Centra el texto */
 }
 
-.content:hover {
-  transform: scale(1.02);
-  background: #f1f9ff;
-  transition: all 0.3s ease-in-out;
-}
 
-.content h3 {
-  font-size: 1.5rem;
-  color: #203864;
-  margin-bottom: 1rem;
-  margin-top: 0;
-  line-height: 1.4;
-  text-align: center;
-  width: 100%;
-}
+/* Css para cards */
 
-.proyectos-scroll {
-  scroll-behavior: smooth;
-}
 
-.proyecto-card {
-  flex: 0 0 auto;
-  width: 300px;
+.card {
+  
   border: none;
-  border-radius: 10px;
+  flex: 1 1 500px;
+  border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
 }
 
-.proyecto-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
 }
 
-.proyecto-img-wrapper {
-  overflow: hidden;
-  max-height: 200px;
-}
-
-.proyecto-img-wrapper img {
-  transition: transform 0.5s ease;
-  object-fit: cover;
-  height: 200px;
-  width: 100%;
-}
-
-.proyecto-card:hover .proyecto-img-wrapper img {
-  transform: scale(1.2);
-}
-
-.zoom-hover {
-  transition: transform 0.4s ease;
-}
-
-.zoom-hover:hover {
-  transform: scale(1.1);
-}

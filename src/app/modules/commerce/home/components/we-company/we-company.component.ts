@@ -56,7 +56,7 @@ export class WeCompanyComponent implements AfterViewInit {
     },
   ];
 
-  timelineData = [
+timelineData = [
   {
     title: '1979 - Los Orígenes',
     points: [
@@ -64,6 +64,7 @@ export class WeCompanyComponent implements AfterViewInit {
       'Orientación a la industria: fuentes, relés, control de fase',
     ],
     icon: 'fas fa-microchip',
+    image: 'img/historia1.jpg',
     visible: false,
   },
   {
@@ -74,6 +75,7 @@ export class WeCompanyComponent implements AfterViewInit {
       'Software a medida para la industria',
     ],
     icon: 'fas fa-cogs',
+    image: 'img/historia2.jpg',
     visible: false,
   },
   {
@@ -83,12 +85,14 @@ export class WeCompanyComponent implements AfterViewInit {
       'Automatización con software integrado',
     ],
     icon: 'fas fa-project-diagram',
+    image: 'img/historia3.jpg',
     visible: false,
   },
   {
     title: '2003 - Desarrollo con DCS',
     points: ['Proyectos con PCS7', 'Operaciones en Ecuador, Panamá y Venezuela'],
     icon: 'fas fa-network-wired',
+    image: 'img/historia4.jpg',
     visible: false,
   },
   {
@@ -98,9 +102,12 @@ export class WeCompanyComponent implements AfterViewInit {
       'Aliados: Siemens, Rockwell, Mitsubishi',
     ],
     icon: 'fas fa-robot',
+    image: 'img/historia5.jpg',
     visible: false,
   },
 ];
+
+
  certificadoCards = [
     {
       title: 'Sistema de control de procesos',
