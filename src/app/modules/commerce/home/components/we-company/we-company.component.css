@@ -88,15 +88,33 @@
 }
 
 .timeline-row {
-  display: contents;
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  width: 100%;
+  align-items: start;
 }
 
-.timeline-cell {
+
+ .timeline-cell {
   position: relative;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+} 
+
+.timeline-cell img,
+.timeline-card-wrapper {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.8s ease;
+}
+
+.timeline-cell.visible,
+.timeline-cell img.visible,
+.timeline-card-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .left-cell {
@@ -125,6 +143,27 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
+}
+.timeline-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/*  Segunda linea de tiempo -----------------------------------------------------------------------*/
+
+.timeline-item {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.8s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ------------------------------------------------------------------------------------------- */

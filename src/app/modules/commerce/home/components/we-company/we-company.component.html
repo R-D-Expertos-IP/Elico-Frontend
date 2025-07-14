@@ -1,10 +1,15 @@
 <!-- Linea de tiempo -->
 <section class="timeline-section">
-  <br>
-  <h2 class="timeline-title text-center">Conoce a Elico Group</h2>
-  <p class="lead text-center text-muted mx-auto mb-5" style="max-width: 900px;">
+
+  <div class="cards-title-wrapper animate-fadeInUp">
+    <h2 class="gradient-title">{{ conoceText }}</h2>
+  </div>
+<div class="card mx-auto mb-5" style="max-width: 900px; padding: 2rem;">
+  <p class="lead text-muted mb-0">
     Nuestra actividad principal es brindar soluciones de ingeniería especializada en el ramo de la automatización, apoyados en un amplio portafolio de equipos y soluciones de nuestros aliados tecnológicos y en nuestra gran experiencia.
   </p>
+</div>
+
 
   <div class="timeline" style="position: relative;">
     <div style="
@@ -28,20 +33,14 @@
   </div>
 </section>
 
-
-
-
-
-
 <!-- Habilidades -->
-
 
 <section class="habilidades-modernas">
   <div class="container">
     
   <!-- TÍTULO DENTRO DEL CONTENEDOR -->
   <div class="cards-title-wrapper animate-fadeInUp">
-    <h2 class="gradient-title">{{ solucionesText }}</h2>
+    <h2 class="gradient-title">{{ nuestrasText }}</h2>
   </div>
 
     <div class="habilidades-content">
@@ -121,58 +120,53 @@
   <div class="cards-title-wrapper animate-fadeInUp">
     <h2 class="gradient-title">{{ historiaText }}</h2>
   </div>
-    <div class="timeline-grid">
-        <div *ngFor="let item of timelineData; let i = index" class="timeline-row">
-        
-        <!-- Columna izquierda -->
-        <div class="timeline-cell left-cell" *ngIf="i % 2 === 0">
-          <div class="timeline-card-wrapper">
-            <div class="timeline-icon">
-              <i [class]="item.icon"></i>
-            </div>
-            <div class="content card">
-              <h3>{{ item.title }}</h3>
-              <ul>
-                <li *ngFor="let point of item.points">{{ point }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-cell left-cell image-cell" *ngIf="i % 2 !== 0">
-          <img [src]="item.image" alt="Imagen de {{ item.title }}" />
-        </div>
-        
-        <!-- Columna central (solo línea azul, ya no lleva ícono) -->
-        <div class="timeline-cell center-cell"></div>
 
-        <!-- Columna derecha -->
-        <div class="timeline-cell right-cell image-cell" *ngIf="i % 2 === 0">
-          <img [src]="item.image" alt="Imagen de {{ item.title }}" />
-        </div>
-        <div class="timeline-cell right-cell" *ngIf="i % 2 !== 0">
-          <div class="timeline-card-wrapper">
-            <div class="timeline-icon">
-              <i [class]="item.icon"></i>
-            </div>
-            <div class="content card">
-              <h3>{{ item.title }}</h3>
-              <ul>
-                <li *ngFor="let point of item.points">{{ point }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+  <div class="timeline" style="position: relative;">
+    <div style="
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: #007bff;
+      z-index: 1;
+    "></div>
 
+    <div *ngFor="let item of timelineData; let i = index"
+      [ngClass]="['timeline-item', (i % 2 === 0 ? 'left' : 'right'), item.visible !== false ? 'visible' : '']">
+      
+      <div class="timeline-icon">
+        <i [class]="item.icon"></i>
+    </div>
+      
+    <div class="content card">
+        <h3>{{ item.title }}</h3>
+
+        <img *ngIf="item.image" [src]="item.image" alt="Imagen de {{ item.title }}" class="timeline-image"/>
+
+        <ul>
+          <li *ngFor="let point of item.points">{{ point }}</li>
+        </ul>
       </div>
     </div>
+  </div>
+</section>
+
+
+ 
+
+  
 
 
   
 <!-- Documento tecnicos -->
+ <section>
   <div class="container my-5">
     <br>
     <div class="cards-title-wrapper animate-fadeInUp">
-      <h2 class="gradient-title">{{ documentosText }}</h2>
+      <h2 class=" gradient-title">{{ documentosText }}</h2>
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-md-4 mb-4" *ngFor="let card of certificadoCards">
@@ -182,50 +176,67 @@
           </a>
           <div class="card-body border-top pt-3">
             <a [href]="card.pdfUrl" target="_blank" class="text-decoration-underline text-dark">
-              <h5 class="card-title fw-bold text-uppercase mb-0">{{ card.title }}</h5>
+              <h5 class="card-title fw-bold text-uppercase mb-0" style="color: #203864;">{{ card.title }}</h5>
             </a>
           </div>
         </div>
       </div>
     </div>
   </div>
+</section>
   
 
 
-<!-- Módulos propuestos -->
-<div class="row justify-content-center">
-  <div class="col-md-6 mb-4" *ngFor="let card of cards; let i = index">
-    <div class="card" style="max-width: 600px; margin: 0 auto;">
-      <img [src]="card.image" class="card-img-top" [alt]="card.title">
-      <div class="card-body text-center">
+<!-- Móulo politicas de salud en el trabajo -->
+<section>
+  <div class="row justify-content-center">
+    <div class="col-md-8 mb-4" *ngFor="let card of cards; let i = index">
+      <div
+        class="card"
+        style="
+          max-width: 900px;
+          margin: 0 auto;
+          min-height: 500px;
+          padding: 2rem;
+        ">
         
-        <h5 class="card-title mb-3">{{ card.title }}</h5>
-        
-        <p class="card-text">
-          {{ card.descShort }}
-          <span class="collapse" [id]="'collapseCardText' + i">
-            {{ card.descFull }}
-          </span>
-        </p>
-        
-        <a
-          class="btn btn-link p-0"
-          data-bs-toggle="collapse"
-          [attr.href]="'#collapseCardText' + i"
-          role="button"
-          (click)="toggleExpand(card)">
-          {{ card.expanded ? 'Leer menos' : 'Leer más' }}
-        </a>
+        <img
+          [src]="card.image"
+          class="card-img-top"
+          [alt]="card.title"
+          style="max-height: 300px; object-fit: cover;">
+
+        <div class="card-body " style="padding: 2rem;">
+          <h5 class="timeline card-title mb-3" style="color: #203864; font-size: 1.75rem;">
+            {{ card.title }}
+          </h5>
+          
+          <p class=" fs-5">
+            {{ card.descShort }}
+            <span class="collapse" [id]="'collapseCardText' + i">
+              {{ card.descFull }}
+            </span>
+          </p>
+          
+          <a
+            class="btn btn-link p-0 fs-5"
+            data-bs-toggle="collapse"
+            [attr.href]="'#collapseCardText' + i"
+            role="button"
+            (click)="toggleExpand(card)">
+            {{ card.expanded ? 'Leer menos' : 'Leer más' }}
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
 
 
 
-    <!-- Botón flotante de WhatsApp -->
+
+<!-- Botón flotante de WhatsApp -->
 <a
   href="https://api.whatsapp.com/send?phone=573136492489"
   target="_blank"

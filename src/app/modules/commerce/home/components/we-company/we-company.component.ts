@@ -13,7 +13,8 @@ import {
 })
 
 export class WeCompanyComponent implements AfterViewInit {
-  solucionesText = 'Nuestras habilidades y experiencia';
+  conoceText = 'Conoce a Elico Group'
+  nuestrasText = 'Nuestras habilidades y experiencia';
   historiaText = "Nuestra Historia";
   documentosText = "Documentos Tecnicos"
 
@@ -149,6 +150,10 @@ timelineData = [
   }
 
   ngAfterViewInit(): void {
+
+    
+    this.onScroll();
+
     this.autoScroll();
 
     // Esperamos a que el DOM esté completamente cargado
@@ -174,17 +179,26 @@ timelineData = [
     }, 20);
   }
 
-  @HostListener('window:scroll', [])
-  onScroll(): void {
-    const elements = document.querySelectorAll('.timeline-item');
-    elements.forEach((el, index) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        this.timelineData[index].visible = true;
-        this.infocards[index].visible = true;
+@HostListener('window:scroll', [])
+onScroll(): void {
+  const elements = document.querySelectorAll('.timeline-item');
+
+  elements.forEach((el, index) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      if (this.infocards[index]) {
+        if (!this.infocards[index].visible) {
+          this.infocards[index].visible = true;
+        }
+      } else if (this.timelineData[index - this.infocards.length]) {
+        if (!this.timelineData[index - this.infocards.length].visible) {
+          this.timelineData[index - this.infocards.length].visible = true;
+        }
       }
-    });
-  }
+    }
+  });
+}
+
 
   initBarObserver(): void {
     const barsSection = document.querySelector('.skills-bars');
