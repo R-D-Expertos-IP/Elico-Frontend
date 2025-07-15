@@ -1,3 +1,4 @@
+<!-- CARRUSEL DEL HOME -->
 <div id="carouselExampleIndicators" class="carousel slide" style="margin-top: 5rem;" data-ride="carousel"
   data-interval="4000">
   <div class="carousel-inner">
@@ -15,15 +16,13 @@
   </a>
 </div>
 
-<div class="row justify-content-center m-2">
-  <div class="cards-container">
-    
-  <!-- TÍTULO DENTRO DEL CONTENEDOR -->
-  <div class="cards-title-wrapper animate-fadeInUp">
-    <h2 class="gradient-title">{{ solucionesText }}</h2>
+<!-- SOLUCIONES CARDS -->
+
+<div class="cards-container">
+  <div class="row justify-content-center col-md-12">
+    <h2 class="gradient-title mb-0">{{ solucionesText }}</h2>
   </div>
 
-  <!-- FLIP CARDS -->
   <div class="flip-card rounded">
     <div class="flip-card-inner">
       <div class="flip-card-front bg-consulting">
@@ -77,36 +76,54 @@
   </div>
 </div>
 
+<!-- FIN SOLUCIONES CARDS -->
 
-<section class="video-section">
+
+<!-- TEXTO Y VIDEO -->
+
+<!-- <section class="video-section">
   <div class="video-content-wrapper">
-    <!-- CARD DE TEXTO -->
     <div class="text-card animate-fadeInUp">
       <div class="text-card-inner">
-           <h2 class="gradient-title">{{ fullTitle }}</h2>
-    <p class="video-description">{{ fullDesc }}</p>
+        <h2 class="gradient-title">{{ fullTitle }}</h2>
+        <p class="video-description">{{ fullDesc }}</p>
         <div class="btn-wrapper">
           <button class="conocenos-btn" (click)="goToNosotros()">Conócenos</button>
         </div>
       </div>
     </div>
 
-    <!-- VIDEO EMBEBIDO DE YOUTUBE -->
+   
     <div class="video-card animate-fadeInUp">
       <div class="responsive-iframe-container">
-        <iframe
-          src="https://www.youtube.com/embed/lgrtGDwxJ-M?si=rSmZ24dnRd6gBlGV"
-          title="Automatización Industrial"
+        <iframe src="https://www.youtube.com/embed/lgrtGDwxJ-M?si=rSmZ24dnRd6gBlGV" title="Automatización Industrial"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+          allowfullscreen></iframe>
       </div>
     </div>
   </div>
-</section>
+</section> -->
+
+
+<div class="row justify-content-center mb-4 gap-4 flex-wrap m-0">
+  <div class="card shadow p-2 col-md-4">
+    <h2 class="gradient-title">{{ fullTitle }}</h2>
+   <div class="card-texto text-left p-3">
+     <p class="">{{ fullDesc }}</p>
+    <div class="btn-wrapper">
+      <button class="conocenos-btn" (click)="goToNosotros()">Conócenos</button>
+    </div>
+   </div>
+  </div>
+  <div class="card col-md-5">
+    <iframe class="responsive-iframe-container" src="https://www.youtube.com/embed/lgrtGDwxJ-M?si=rSmZ24dnRd6gBlGV" title="Automatización Industrial"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+</div>
 
 
 
-
-
+<!-- FIN TEXTO Y VIDEO -->

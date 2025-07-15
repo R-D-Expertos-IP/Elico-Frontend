@@ -10,6 +10,8 @@
         </div>
       </div>
 
+      <!-- Card formulario -->
+      <div class="rounded">
       <div class="card-header text-center text-white fs-5 py-3"
            style="background: linear-gradient(to right, #0056b3, #007bff);">
         Formulario PQRSF
@@ -59,28 +61,35 @@
 
           <!-- Tipo de identificación y número -->
           <div class="row mb-3">
-            <div class="col-md-6">
-              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+            <div class="col-md-6 mb-3">
+              <label class="form-label fs-5 text-center w-100 d-flex justify-content-center align-items-center gap-2">
                 <i class="fa-solid fa-id-card text-info"></i>
                 Tipo de Identificación
               </label>
+              
               <select
                 formControlName="documentType"
                 class="form-select text-center fs-6"
-                [ngClass]="{'is-invalid': contactForm.get('documentType')?.touched && contactForm.get('documentType')?.invalid}">
+                [ngClass]="{
+                  'is-invalid': contactForm.get('documentType')?.touched && contactForm.get('documentType')?.invalid
+                }">
                 <option value="">Seleccione una opción</option>
                 <option value="CC">Cédula de ciudadanía</option>
                 <option value="CE">Cédula de extranjería</option>
                 <option value="NIT">NIT</option>
                 <option value="Pasaporte">Pasaporte</option>
               </select>
-              <div *ngIf="
-                contactForm.get('documentType')?.touched &&
-                contactForm.get('documentType')?.hasError('required')"
-                class="text text-danger fs-6">
+              
+              <div
+                *ngIf="
+                  contactForm.get('documentType')?.touched &&
+                  contactForm.get('documentType')?.hasError('required')
+                "
+                class="invalid-feedback d-block text-center fs-6">
                 Este campo es obligatorio
               </div>
             </div>
+
 
             <div class="col-md-6 mt-3 mt-md-0">
               <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
@@ -126,6 +135,49 @@
             </div>
           </div>
 
+          <!-- Celular y Área de Interés -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-phone text-info"></i>
+                Celular
+              </label>
+              <input
+                type="text"
+                formControlName="phone"
+                class="form-control text-center fs-6"
+                [ngClass]="{
+                  'is-invalid': contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid
+                }">
+              <div *ngIf="
+                  contactForm.get('phone')?.touched &&
+                  contactForm.get('phone')?.hasError('required')
+                " class="text text-danger fs-6">
+                Este campo es obligatorio
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-3 mt-md-0">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-layer-group text-info"></i>
+                Área de Interés
+              </label>
+              <input
+                type="text"
+                formControlName="interestArea"
+                class="form-control text-center fs-6"
+                [ngClass]="{
+                  'is-invalid': contactForm.get('interestArea')?.touched && contactForm.get('interestArea')?.invalid
+                }">
+              <div *ngIf="
+                  contactForm.get('interestArea')?.touched &&
+                  contactForm.get('interestArea')?.hasError('required')
+                " class="text text-danger fs-6">
+                Este campo es obligatorio
+              </div>
+            </div>
+          </div>
+
           <!-- Correo -->
           <div class="mb-3">
             <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
@@ -148,45 +200,6 @@
               contactForm.get('email')?.hasError('email')"
               class="text text-danger fs-6">
               Ingresa un correo válido
-            </div>
-          </div>
-
-          <!-- Teléfono y Área de Interés -->
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
-                <i class="fa-solid fa-phone text-info"></i>
-                Celular
-              </label>
-              <input
-                type="text"
-                formControlName="phone"
-                class="form-control text-center fs-6"
-                [ngClass]="{'is-invalid': contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid}">
-              <div *ngIf="
-                contactForm.get('phone')?.touched &&
-                contactForm.get('phone')?.hasError('required')"
-                class="text text-danger fs-6">
-                Este campo es obligatorio
-              </div>
-            </div>
-
-            <div class="col-md-6 mt-3 mt-md-0">
-              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
-                <i class="fa-solid fa-layer-group text-info"></i>
-                Área de Interés
-              </label>
-              <input
-                type="text"
-                formControlName="interestArea"
-                class="form-control text-center fs-6"
-                [ngClass]="{'is-invalid': contactForm.get('interestArea')?.touched && contactForm.get('interestArea')?.invalid}">
-              <div *ngIf="
-                contactForm.get('interestArea')?.touched &&
-                contactForm.get('interestArea')?.hasError('required')"
-                class="text text-danger fs-6">
-                Este campo es obligatorio
-              </div>
             </div>
           </div>
 
@@ -252,6 +265,7 @@
             </button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   </div>

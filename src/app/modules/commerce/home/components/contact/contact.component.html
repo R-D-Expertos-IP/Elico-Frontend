@@ -9,13 +9,14 @@
           <h2 class="gradient-title mb-0">{{ contactText }}</h2>
         </div>
       </div>
-
+      <!-- Card formulario --> 
+      <div class="rounden">
       <div class="card-header text-center text-white fs-5 py-3" 
         style="background: linear-gradient(to right, #0056b3, #007bff);">
         Formulario Trabaja con Nosotros
       </div>
 
-      <div class="card shadow rounded">
+      <div class="shadow-sm rounded-bottom" style="background: #fff;">
         <form [formGroup]="contactForm" class="p-3 col-md-12">
 
           <!-- Nombre y Apellidos -->
@@ -60,31 +61,29 @@
               </div>
             </div>
           </div>
-
-          <!-- Correo -->
-          <div class="mb-3">
-            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
-              <i class="fa-solid fa-envelope text-info"></i>
-              Correo Electrónico
-            </label>
-            <input
-              type="email"
-              formControlName="email"
-              class="form-control text-center fs-6"
-              [ngClass]="{
-                'is-invalid': contactForm.get('email')?.touched && contactForm.get('email')?.invalid
-              }">
-            <div *ngIf="
-                contactForm.get('email')?.touched &&
-                contactForm.get('email')?.hasError('required')
-              " class="text text-danger fs-6">
-              El correo es obligatorio
+          
+                    <!-- Empresa y Cargo (opcionales) -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-building text-info"></i>
+                Empresa
+              </label>
+              <input
+                type="text"
+                formControlName="company"
+                class="form-control text-center fs-6">
             </div>
-            <div *ngIf="
-                contactForm.get('email')?.touched &&
-                contactForm.get('email')?.hasError('email')
-              " class="text text-danger fs-6">
-              Ingresa un correo válido
+
+            <div class="col-md-6 mt-3 mt-md-0">
+              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+                <i class="fa-solid fa-briefcase text-info"></i>
+                Cargo
+              </label>
+              <input
+                type="text"
+                formControlName="position"
+                class="form-control text-center fs-6">
             </div>
           </div>
 
@@ -131,30 +130,36 @@
             </div>
           </div>
 
-          <!-- Empresa y Cargo (opcionales) -->
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
-                <i class="fa-solid fa-building text-info"></i>
-                Empresa
-              </label>
-              <input
-                type="text"
-                formControlName="company"
-                class="form-control text-center fs-6">
+          <!-- Correo -->
+          <div class="mb-3">
+            <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
+              <i class="fa-solid fa-envelope text-info"></i>
+              Correo Electrónico
+            </label>
+            <input
+              type="email"
+              formControlName="email"
+              class="form-control text-center fs-6"
+              [ngClass]="{
+                'is-invalid': contactForm.get('email')?.touched && contactForm.get('email')?.invalid
+              }">
+            <div *ngIf="
+                contactForm.get('email')?.touched &&
+                contactForm.get('email')?.hasError('required')
+              " class="text text-danger fs-6">
+              El correo es obligatorio
             </div>
-
-            <div class="col-md-6 mt-3 mt-md-0">
-              <label class="form-label d-flex justify-content-center align-items-center gap-2 fs-5">
-                <i class="fa-solid fa-briefcase text-info"></i>
-                Cargo
-              </label>
-              <input
-                type="text"
-                formControlName="position"
-                class="form-control text-center fs-6">
+            <div *ngIf="
+                contactForm.get('email')?.touched &&
+                contactForm.get('email')?.hasError('email')
+              " class="text text-danger fs-6">
+              Ingresa un correo válido
             </div>
           </div>
+
+          
+
+
 
           <!-- Por qué nos visita -->
           <div class="mb-3">
@@ -270,6 +275,7 @@
           </div>
 
         </form>
+      </div>
       </div>
     </div>
   </div>

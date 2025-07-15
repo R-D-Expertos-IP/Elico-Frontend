@@ -126,3 +126,22 @@
   box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
 }
 
+.btn-wrapper {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.solicitud-btn {
+  background: linear-gradient(to right, #0056b3, #007bff);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  .text-decoration-none {
+  text-decoration: none !important;
+  }
+}
