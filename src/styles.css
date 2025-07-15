@@ -22,6 +22,7 @@
   font-size: 20px !important;
   background: linear-gradient(to right, #0039a5 50%, #004de6 50%);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
@@ -175,3 +176,11 @@
 }
 
 /* FIN CARDS SOLUCIONES */
+
+/* QUITA INDICADORES DE LOS CARRUSELES */
+
+.carousel-indicators {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}

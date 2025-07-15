@@ -7,6 +7,13 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class EnergyComponent implements OnInit {
 
+/* Titulo fuera del carrusel de marcas */
+activeIndex = 0;
+
+onSlide(event: any) {
+  this.activeIndex = event.to;
+}
+
  
 
  /* Array para cards de linea */
@@ -93,7 +100,36 @@ proyectoText = [
   }
 ];
 
+/* Array para las inagenes del carrusel */
 
+images = [
+    { src: '/img/foto1.jpeg', alt: 'Foto 1', title: ' Integración de señales nivel 2 en S/E Copey.' },
+    { src: '/img/foto2.jpeg', alt: 'Foto 2', title: 'S/E Elevadora Sabanalarga.' },
+    { src: '/img/foto3.jpeg', alt: 'Foto 3', title: 'Visita a Bosques Solares de Bolívar (ISAGEN).' },
+    { src: '/img/foto4.jpeg', alt: 'Foto 4', title: 'Infraestructura solar en operación – Bosques Solares de Bolívar (ISAGEN).' },
+    { src: '/img/foto5.jpeg', alt: 'Foto 5', title: 'Supervisión y verificación de sistema de control – PCH San Bartolomé.'},
+    { src: '/img/foto6.jpeg', alt: 'Foto 6', title: 'S/E de transmisión.' },
+    { src: '/img/foto7.jpeg', alt: 'Foto 7', title: 'Capacitación Partners Grid +, Casa matriz Siemens.' },
+    { src: '/img/foto8.jpeg', alt: 'Foto 8', title: ' Capacitación Partners Grid +, Casa matriz Siemens. ' },
+    { src: '/img/foto9.jpeg', alt: 'Foto 9', title: 'Digital Substation, evento de Partners Grid + en Casa matriz Siemens.' },
+    { src: '/img/foto10.jpeg', alt: 'Foto 10', title: 'Capacitación Partners Grid +, Casa matriz Siemens.' },
+    { src: '/img/foto11.jpeg', alt: 'Foto 11', title: 'Capacitación Partners Grid +, Casa matriz Siemens.' },
+    { src: '/img/foto12.jpeg', alt: 'Foto 12', title: 'Distribution Automation, evento de Partners Grid + en Casa matriz Siemens.' },
+    { src: '/img/foto13.jpeg', alt: 'Foto 13', title: 'Gestión y supervisión en planta solar.' },
+    { src: '/img/foto14.jpeg', alt: 'Foto 14', title: 'Integración de señales nivel 2 en S/E Elevadora Sabanalarga.' },
+    { src: '/img/foto15.jpeg', alt: 'Foto 15', title: 'Visita técnico- comercial PCH San Bartolomé y Oibita.' },
+    { src: '/img/foto16.jpeg', alt: 'Foto 16', title: ' Revisión protecciones SIPROTEC 5.' }
+  ];
+
+  marcas = [
+    { src: '/img/siemens.png', alt: 'Siemens', title: 'Siemens' },
+    { src: '/img/rockwell.jpg', alt: 'Isagen', title: 'Isagen' },
+    { src: '/img/mitsubishi.jpg', alt: 'Negratin', title: 'Negratin' },
+    { src: '/img/wonderware.png', alt: 'Negratin', title: 'Negratin' },
+    { src: '/img/rittal.jpg', alt: 'Negratin', title: 'Negratin' },
+    { src: '/img/maper.png', alt: 'Negratin', title: 'Negratin' },
+    { src: '/img/metalandes.jpg', alt: 'Negratin', title: 'Negratin' }
+  ];
 
 
    /* Variables de los titulos y textos de la card energia*/
@@ -142,6 +178,9 @@ logrosData = {
       if (rect.top < window.innerHeight - 100) {
         this.serviciosCards[index].visible = true;
       }
+
+      
     });
+    
   }
 }
