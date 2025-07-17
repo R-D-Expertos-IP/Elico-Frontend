@@ -184,3 +184,252 @@
   padding-left: 0;
   margin-bottom: 0;
 }
+
+
+/* Tabla */
+#select_paginador {
+  color: #0039a5;
+  font-weight: 600;
+  border-color: #33ccff;
+  width: 5rem !important;
+}
+
+.paginador_bajo {
+  color: gray !important;
+  font-weight: 300 !important;
+  justify-content: center !important;
+}
+
+.paginador_bajo_numeros {
+  color: #0039a5 !important;
+  font-weight: 600 !important;
+}
+
+.paginador_controles {
+  padding-top: 13px !important;
+  color: #0039a5 !important;
+  font-weight: 600 !important;
+}
+
+.ngx-pagination .current {
+  background: linear-gradient(#0039a5, #004de6) !important;
+  border-radius: 5px !important;
+}
+
+div.scroll {
+  overflow-x: auto !important;
+  height: auto !important;
+  display: flex !important;
+}
+
+.table {
+  --bs-table-bg: transparent !important;
+  --bs-table-border-color: #dee2e6 !important;
+}
+
+.cont_head tr th {
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 13px !important;
+}
+
+.cont_head {
+  background: linear-gradient(#0039a5, #004de6) !important;
+}
+
+.cont_head th:first-child {
+  border-top-left-radius: 10px !important;
+}
+
+.cont_head th:last-child {
+  border-top-right-radius: 10px !important;
+}
+
+.cont_body tr:hover {
+  border: 2px solid #33ccff !important;
+}
+
+.cont_body tr {
+  border-radius: 10px !important;
+}
+
+th {
+  color: white !important;
+  /* background: linear-gradient(#0039a5, #004de6); */
+  padding: 16px 15px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  font-size: 15px;
+  border: none !important;
+}
+
+td {
+  padding: 10px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* #custom_td {
+  vertical-align: unset !important;
+} */
+
+.td_1 {
+  color: #0039a5 !important;
+  font-weight: 600 !important;
+}
+
+.td_2 {
+  color: gray !important;
+}
+
+.td_3 {
+  color: #004de6 !important;
+}
+
+#td_4 {
+  color: darkcyan !important;
+}
+
+#td_5 {
+  color: #1272b3 !important;
+}
+
+#td_6 {
+  color: purple !important;
+}
+
+.color {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+#table_icon_edit {
+  /* Ajusta el tamaño del icono */
+  background: linear-gradient(to right, #0039a5 50%, #004de6 50%);
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+}
+
+#table_icon_punto {
+  /* Ajusta el tamaño del icono */
+  background: linear-gradient(to right, #0039a5 50%, #004de6 50%);
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+}
+
+#table_icon_sistema {
+  /* Ajusta el tamaño del icono */
+  background: linear-gradient(to right, #0039a5 50%, #004de6 50%);
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+}
+
+#table_icon_permission {
+  color: gray !important;
+  cursor: pointer !important;
+}
+
+#table_icon_detail {
+  color: gray;
+  cursor: pointer;
+}
+
+#table_icon_password {
+  color: #33ccff;
+  cursor: pointer;
+}
+
+.button_estado {
+  border: 0 !important;
+  border-radius: 20px !important;
+  height: 30px;
+  width: 30px;
+}
+
+.button_estado i {
+  color: white !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.contenido_img img {
+  width: 60px !important;
+  height: 60px !important;
+  justify-content: center !important;
+  text-align: center !important;
+  border-radius: 40px !important;
+  border-color: transparent !important;
+  align-items: center !important;
+}
+
+.contenido_img {
+  border: none !important;
+  border-radius: 60px !important;
+  border-color: transparent !important;
+}
+
+/*//////////////////////////////////// Fin Tabla ////////////////////////////////////////*/
+
+/* Tipografias */
+
+#numero_total {
+  color: #0039a5 !important;
+}
+
+h2 {
+  color: gray !important;
+}
+
+h3 {
+  color: gray !important;
+}
+
+h4 {
+  color: gray !important;
+}
+
+h5 {
+  color: #0039a5 !important;
+}
+
+h6 {
+  color: #0039a5 !important;
+}
+
+p {
+  color: gray !important;
+}
+
+label {
+  color: gray !important;
+}
+
+.validacion {
+  color: red !important;
+}
+
+.span_texto {
+  color: gray !important;
+}
+
+.strong_texto {
+  color: #0039a5 !important;
+}
+
+.span_alert {
+  color: gray !important;
+}
+
+.strong_titulos {
+  color: gray !important;
+}
+
+/*Fin Tipografias */

@@ -9,7 +9,9 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/commerce/home/start',
+    // redirectTo: '/commerce/home/start',
+    redirectTo: '/authentication/login',
+    
   },
   {
     path: 'gestiones',
@@ -22,10 +24,10 @@ const routes: Routes = [
     path: 'commerce',
     loadChildren: () => import('./modules/commerce/home/home.module').then(m => m.HomeModule),
   },
-  //  {
-  //   path: 'authentication',
-  //   loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
-  // }
+   {
+    path: 'authentication',
+    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
+  }
 ];
 
 @NgModule({

@@ -19,6 +19,11 @@ export const content: Routes = [
     loadChildren: () => import('../../modules/admin/users/users.module').then(m => m.UsersModule)
    // canActivate: [AdminGuard]
   },
+   {
+    path: 'commerce',
+    loadChildren: () => import('../../modules/admin/commerce/commerce.module').then(m => m.CommerceModule)
+   // canActivate: [AdminGuard]
+  },
 
 
 
