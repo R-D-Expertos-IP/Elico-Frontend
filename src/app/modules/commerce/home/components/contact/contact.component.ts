@@ -10,19 +10,123 @@ export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
   contactText = 'Trabaja con Nosotros';
 
+  // Array de campos para generar el HTML dinámicamente
+  formFields = [
+    {
+      name: 'firstName',
+      label: 'Nombre',
+      icon: 'fa-user',
+      type: 'text',
+      required: true,
+      col: '6',
+    },
+    {
+      name: 'lastName',
+      label: 'Apellidos',
+      icon: 'fa-user',
+      type: 'text',
+      required: true,
+      col: '6',
+    },
+    {
+      name: 'documentType',
+      label: 'Tipo de Identificación',
+      icon: 'fa-id-card',
+      type: 'select',
+      options: [
+        { value: '', text: 'Seleccione una opción' },
+        { value: 'CC', text: 'Cédula de ciudadanía' },
+        { value: 'CE', text: 'Cédula de extranjería' },
+        { value: 'NIT', text: 'NIT' },
+        { value: 'Pasaporte', text: 'Pasaporte' },
+      ],
+      required: true,
+      col: '6',
+    },
+    {
+      name: 'documentNumber',
+      label: 'Número de Identificación',
+      icon: 'fa-hashtag',
+      type: 'text',
+      required: true,
+      col: '6',
+    },
+    {
+      name: 'company',
+      label: 'Empresa',
+      icon: 'fa-building',
+      type: 'text',
+      required: true,
+      col: '6',
+    },
+    {
+      name: 'position',
+      label: 'Cargo',
+      icon: 'fa-briefcase',
+      type: 'text',
+      required: true,
+      col: '6',
+    },
+    {
+      name: 'phone',
+      label: 'Celular',
+      icon: 'fa-phone',
+      type: 'text',
+      required: true,
+      col: '6',
+    },
+    {
+      name: 'interestArea',
+      label: 'Área de Interés',
+      icon: 'fa-layer-group',
+      type: 'text',
+      required: true,
+      col: '6',
+    },
+    {
+      name: 'email',
+      label: 'Correo Electrónico',
+      icon: 'fa-envelope',
+      type: 'email',
+      required: true,
+      col: '12',
+    },
+    {
+      name: 'reasonVisit',
+      label: '¿Por qué nos visita?',
+      icon: 'fa-comment-dots',
+      type: 'textarea',
+      required: true,
+      col: '12',
+    }
+  ];
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      company: ['', Validators.required],
-      position: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      interestArea: ['', Validators.required],
-      reasonVisit: ['', Validators.required],
-      cv: [null, Validators.required],
+    this.contactForm = this.fb.group({});
+    
+    // Dynamically add controls
+    this.formFields.forEach(field => {
+      const validators = field.required
+        ? (field.type === 'email'
+            ? [Validators.required, Validators.email]
+            : [Validators.required])
+        : [];
+      this.contactForm.addControl(field.name, this.fb.control('', validators));
     });
+
+    this.contactForm.addControl('cv', this.fb.control(null, Validators.required));
+    this.contactForm.addControl('termsConditions', this.fb.control(false, Validators.requiredTrue));
+    this.contactForm.addControl('receiveAds', this.fb.control(false));
+  }
+
+  chunkFields(fields: any[], size: number): any[][] {
+    const result = [];
+    for (let i = 0; i < fields.length; i += size) {
+      result.push(fields.slice(i, i + size));
+    }
+    return result;
   }
 
   onFileChange(event: any) {
@@ -40,6 +144,5 @@ export class ContactComponent implements OnInit {
       return;
     }
     console.log('Formulario enviado:', this.contactForm.value);
-    
   }
 }

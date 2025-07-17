@@ -2,7 +2,7 @@
 <section class="timeline-section">
 
   <div class="cards-title-wrapper animate-fadeInUp">
-    <h2 class="gradient-title">{{ conoceText }}</h2>
+    <h2 class="gradient-title mb-0">{{ conoceText }}</h2>
   </div>
 <div class="card mx-auto mb-5" style="max-width: 900px; padding: 2rem;">
   <p class="lead text-muted mb-0">
@@ -24,7 +24,7 @@
       </div>
       
       <div class="content card">
-        <h3>{{ item.title }}</h3>
+        <h3 class="mb-0">{{ item.title }}</h3>
         <ul>
           <li *ngFor="let point of item.points">{{ point }}</li>
         </ul>
@@ -40,22 +40,17 @@
     
   <!-- TÍTULO DENTRO DEL CONTENEDOR -->
   <div class="cards-title-wrapper animate-fadeInUp">
-    <h2 class="gradient-title">{{ nuestrasText }}</h2>
+    <h2 class="gradient-title mb-0">{{ nuestrasText }}</h2>
   </div>
 
     <div class="habilidades-content">
     
-      <div class=" card card-text animate-fadeIn">
-        <p>
-          Elico inició sus operaciones en 1979 y se consolidó formalmente en el 2013 como Elico Group S.A.S.
-        </p>
-        <p>
-          Somos un integrador de sistemas en automatización industrial con más de 46 años de experiencia...
-        </p>
-        <p>
-          Nuestra oferta de productos y servicios atiende a los clientes en distintos sectores.
+      <div class="card card-text animate-fadeIn">
+        <p *ngFor="let paragraph of cardAboutTexts" class="mb-2">
+          {{ paragraph }}
         </p>
       </div>
+
 
      
       <div class="skills-bars">
@@ -114,11 +109,11 @@
   </div>
  -->
 
-<!-- Segunda linea de tiempo -->
+<!--Nuestra historia -->
 
 <section class="timeline-section">
   <div class="cards-title-wrapper animate-fadeInUp">
-    <h2 class="gradient-title">{{ historiaText }}</h2>
+    <h2 class="gradient-title mb-0">{{ historiaText }}</h2>
   </div>
 
   <div class="timeline" style="position: relative;">
@@ -142,7 +137,7 @@
     </div>
       
     <div class="content card">
-        <h3>{{ item.title }}</h3>
+        <h3 class="mb-0">{{ item.title }}</h3>
 
         <img *ngIf="item.image" [src]="item.image" alt="Imagen de {{ item.title }}" class="timeline-image"/>
 
@@ -166,7 +161,7 @@
   <div class="container my-5">
     <br>
     <div class="cards-title-wrapper animate-fadeInUp">
-      <h2 class=" gradient-title">{{ documentosText }}</h2>
+      <h2 class=" gradient-title mb-0">{{ documentosText }}</h2>
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-md-4 mb-4" *ngFor="let card of certificadoCards">
@@ -187,31 +182,28 @@
   
 
 
-<!-- Móulo politicas de salud en el trabajo -->
 <section>
   <div class="row justify-content-center">
     <div class="col-md-8 mb-4" *ngFor="let card of cards; let i = index">
       <div
-        class="card"
+        class="card shadow-sm rounded"
         style="
-          max-width: 900px;
+          max-width: 700px;
           margin: 0 auto;
-          min-height: 500px;
-          padding: 2rem;
         ">
         
         <img
           [src]="card.image"
           class="card-img-top"
           [alt]="card.title"
-          style="max-height: 300px; object-fit: cover;">
+          style="max-height: 200px; object-fit: cover;">
 
-        <div class="card-body " style="padding: 2rem;">
-          <h5 class="timeline card-title mb-3" style="color: #203864; font-size: 1.75rem;">
+        <div class="card-body p-3">
+          <h5 class="timeline card-title mb-2" style="color: #203864; font-size: 1.5rem;">
             {{ card.title }}
           </h5>
           
-          <p class=" fs-5">
+          <p class="fs-6">
             {{ card.descShort }}
             <span class="collapse" [id]="'collapseCardText' + i">
               {{ card.descFull }}
@@ -219,7 +211,7 @@
           </p>
           
           <a
-            class="btn btn-link p-0 fs-5"
+            class="btn btn-link p-0 fs-6"
             data-bs-toggle="collapse"
             [attr.href]="'#collapseCardText' + i"
             role="button"
@@ -231,6 +223,7 @@
     </div>
   </div>
 </section>
+
 
 
 

@@ -1,39 +1,35 @@
 <section class="timeline-section">
-    <h2 class="gradient-title mb-4">
-      Integrador de Sistemas de Gestión Energética en Plantas Industriales de Colombia
-    </h2>
-  <div class="container my-5">
-    <div class="card p-3 rounded-4">
-      <div class="card-body">
+  <div class="cards-title-wrapper animate-fadeInUp mb-4 text-center">
+    
+  <h2 class="gradient-title mb-0">
+    {{ contenido.titulo }}
+  </h2>
+</div>
 
-        <p class=" text-muted mx-auto mb-3" style="max-width: 1400px;">
-          En Elico Group, nuestra área de Energía está dedicada a brindar soluciones avanzadas 
-          y estratégicas en automatización, electrificación y control de sistemas energéticos en 
-          centrales de generación y Subestaciones eléctricas.
-        </p>
+<div class="container my-0">
+  <div class="card p-3 rounded-4">
+    <div class="card-body">
 
-        <p class=" text-muted mx-auto mb-3" style="max-width: 1400px;">
-          Nuestro enfoque combina ingeniería de alta calidad con tecnología de vanguardia, 
-          buscando la máxima eficiencia operativa.
-        </p>
+      <p
+        *ngFor="let parrafo of contenido.parrafos"
+        class="text-muted mx-auto mb-3"
+        style="max-width: 1400px;">
+        {{ parrafo }}
+      </p>
 
-        <p class=" text-muted mx-auto mb-3" style="max-width: 1400px;">
-          Acompañamos a nuestros clientes en cada fase del proyecto con soporte técnico 
-          especializado, garantizando el éxito y la continuidad de sus operaciones.
-        </p>
-
-        <div class="text-center mt-3">
-          <a
-            class="solicitud-btn text-white px-3 py-2 fs-5 border-0"
-           style="text-decoration: none;"
-            href="/commerce/home/contact">
-            Enviar Solicitud
-          </a>
-
-        </div>
+      <div class="text-center mt-3">
+        <a
+          class="solicitud-btn text-white px-3 py-2 fs-5 border-0"
+          [href]="contenido.botonUrl"
+          style="text-decoration: none;">
+          {{ contenido.botonTexto }}
+        </a>
       </div>
+
     </div>
   </div>
+</div>
+
 
 
 
@@ -41,61 +37,42 @@
 <div class="container my-5">
 
   <!-- TÍTULO FUERA DE LA CARD -->
-  <h2 class="gradient-title mb-5">
-    Beneficios que se obtienen con los Sistemas de Gestión Energética en Plantas Industriales
-  </h2>
-
-  <div class="row g-4">
-  <!-- Item 1 -->
-  <div class="col-md-4">
-    <div class="card video-card text-center p-4">
-      <i class="fa-solid fa-chart-line fa-3x text-primary mb-3"></i>
-      <h5 class="fw-bold mt-2">Máxima Eficiencia y Productividad</h5>
-      <p class="text-muted">
-        Los dispositivos de control tenemos la capacidad de tomar mejores
-        decisiones y de forma más rápida al proporcionar información operacional.
-      </p>
-    </div>
+  <div class="cards-title-wrapper animate-fadeInUp mb-4 text-center">
+    <h2 class="gradient-title mb-0">
+      {{ beneficios.titulo }}
+    </h2>
   </div>
 
-  <!-- Item 2 -->
-  <div class="col-md-4">
-    <div class="card video-card text-center p-4">
-      <i class="fa-solid fa-circle-info fa-3x text-primary mb-3"></i>
-      <h5 class="fw-bold mt-2">Uso Eficiente de los Recursos</h5>
-      <p class="text-muted">
-        Fomentar un uso más eficiente de los recursos para maximizar los activos
-        y la producción, simplificar tareas e integrar estrategias.
-      </p>
+  <div class="row g-4 my-2">
+    <div 
+      class="col-md-4" 
+      *ngFor="let item of beneficios.items">
+      <div class="card video-card text-center p-4">
+        <i 
+          class="{{ item.icono }} fa-3x text-primary mb-3"></i>
+        <h5 class="fw-bold mt-2">
+          {{ item.titulo }}
+        </h5>
+        <p class="text-muted">
+          {{ item.texto }}
+        </p>
+      </div>
     </div>
   </div>
-
-  <!-- Item 3 -->
-  <div class="col-md-4">
-    <div class="card video-card text-center p-4">
-      <i class="fa-solid fa-plus-circle fa-3x text-primary mb-3"></i>
-      <h5 class="fw-bold mt-2">Aumento de la Producción</h5>
-      <p class="text-muted">
-        Con los sistemas de automatización se logra el aumento del valor de la
-        producción, reduciendo costos y mejorando la seguridad.
-      </p>
-    </div>
-  </div>
-</div>
-
 
 </div>
 
 
-  <div class="container my-5">
+<!-- Card de gestion energetica -->
+<div class="container my-5">
   <div class="card p-4">
     <div class="card-body">
       <div class="row align-items-stretch" style="min-height: 100%;">
         <!-- Texto -->
-        <div class="col-md-6 mb-4 mb-md-0 d-flex flex-column justify-content-center">
-          <h6 class="gradient-title">
+        <div class="col-md-6 mb-4 mb-md-0 d-flex flex-column">
+          <h5 class="gradient-title mb-0">
             {{ bloqueTitulo }}
-          </h6>
+          </h5>
           <p class="text-muted mt-3">
             {{ bloqueTexto }}
           </p>
@@ -121,12 +98,12 @@
 <!-- Proyectos destacados -->
 
 <div class="container-fluid my-5">
-  <h2 class="gradient-title mb-4">
-    Proyectos Destacados
+  <h2 class="gradient-title mb-0">
+    {{ proyectosDestacados.titulo }}
   </h2>
 
   <div class="row g-4">
-    <div class="col-md-3" *ngFor="let proyecto of proyectoText">
+    <div class="col-md-3" *ngFor="let proyecto of proyectosDestacados.items">
       <div class="card h-100">
         <img
           [src]="proyecto.image"
@@ -136,18 +113,25 @@
         />
         <div class="card-body">
           <h5 class="card-title fw-bold text-primary">{{ proyecto.title }}</h5>
-          <p class="card-text mb-2"><strong>{{ proyecto.location }}</strong></p>
-          <p class="card-text"><strong>Solución:</strong> {{ proyecto.solution }}</p>
-          <p class="card-text"><strong>Impacto:</strong> {{ proyecto.impact }}</p>
+          <p class="card-text mb-2">
+            <strong>{{ proyecto.location }}</strong>
+          </p>
+          <p class="card-text">
+            <strong>Solución:</strong> {{ proyecto.solution }}
+          </p>
+          <p class="card-text">
+            <!-- <strong>Impacto:</strong> --> {{ proyecto.impact }}
+          </p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+
 <!-- Card de logros -->
 <div class="container my-5">
-  <h2 class="gradient-title mb-4">{{ logrosData.title }}</h2>
+  <h2 class="gradient-title mb-0">{{ logrosData.title }}</h2>
   <div class="card p-4 rounded-4">
     <div class="card-body">
       
@@ -217,35 +201,36 @@
 
 
 <!-- Carrusel de marcas -->
-
 <div id="carouselMarcas" 
-     class="carousel slide w-50 mx-auto mt-5" 
+     class="carousel slide w-75 mx-auto mt-5" 
      data-ride="carousel" 
-     data-interval="4000"
-     (slid.bs.carousel)="onSlide($event)">
+     data-interval="4000">
 
   <!-- Indicadores -->
   <ol class="carousel-indicators">
-    <li 
-      *ngFor="let marca of marcas; let i = index"
-      data-target="#carouselMarcas"
-      [attr.data-slide-to]="i"
-      [ngClass]="{'active': i === 0}">
+    <li *ngFor="let i of [].constructor(Math.ceil(marcas.length / 3)); let idx = index"
+        data-target="#carouselMarcas"
+        [attr.data-slide-to]="idx"
+        [ngClass]="{'active': idx === 0}">
     </li>
   </ol>
 
   <!-- Slides -->
   <div class="carousel-inner">
-    <div 
-      *ngFor="let marca of marcas; let i = index"
-      class="carousel-item"
-      [ngClass]="{'active': i === 0}">
-
-      <img 
-        [src]="marca.src" 
-        class="d-block w-100 img-fluid" 
-        style="height: 200px; object-fit: contain; background: #f8f9fa;"
-        [alt]="marca.alt">
+    <div *ngFor="let i of [].constructor(Math.ceil(marcas.length / 3)); let idx = index"
+         class="carousel-item"
+         [ngClass]="{'active': idx === 0}">
+      <div class="row">
+        <ng-container *ngFor="let marca of marcas.slice(idx * 3, idx * 3 + 3)">
+          <div class="col-4">
+            <img 
+              [src]="marca.src" 
+              class="d-block w-100 img-fluid" 
+              style="height: 200px; object-fit: contain; background: #f8f9fa;"
+              [alt]="marca.alt">
+          </div>
+        </ng-container>
+      </div>
     </div>
   </div>
 
@@ -259,7 +244,6 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
 
 
 

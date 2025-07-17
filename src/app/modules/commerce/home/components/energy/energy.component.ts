@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-energy',
@@ -6,167 +7,67 @@ import { Component, OnInit, HostListener } from '@angular/core';
   styleUrls: ['./energy.component.css']
 })
 export class EnergyComponent implements OnInit {
+  Math = Math;
 
-/* Titulo fuera del carrusel de marcas */
-activeIndex = 0;
+  activeIndex = 0;
 
-onSlide(event: any) {
-  this.activeIndex = event.to;
-}
+  contenido: any;
+  beneficios: any;
+  serviciosCards: any[];
+  proyectosDestacados: any;
+  bloqueTitulo: string;
+  bloqueTexto: string;
+  bloqueImagen: string;
+  images: any[];
+  marcas: any[];
+  logrosData: any;
 
- 
-
- /* Array para cards de linea */
-serviciosCards = [
-  {
-    title: 'Ingeniería y Puesta en Marcha: Incluye ingeniería y configuración, pruebas FAT pruebas SAT, y señalización de nivel 2 y nivel 3.',
-    icon: 'fas fa-bullseye',
-    visible: false,
-  },
-  {
-    title: 'Diseño e implementación de sistemas SCADA, IHM y PLC en diferentes niveles de control.',
-    icon: 'fas fa-desktop',
-    visible: false,
-  },
-  {
-    title: 'Desarrollo de ingeniería básica y de detalle para sistemas de automatización y electrificación.',
-    icon: 'fas fa-drafting-compass',
-    visible: false,
-  },
-  {
-    title: 'Diseño, suministro y montaje de tableros de control, potencia, CCM (Centros de Control de Motores) y Subestaciones.',
-    icon: 'fas fa-bolt',
-    visible: false,
-  },
-  {
-    title: 'Diagnóstico, ajuste o intervenciones en reguladores de velocidad y tensión.',
-    icon: 'fas fa-tools',
-    visible: false,
-  },
-  {
-    title: 'Levantamiento de información y acompañamiento en línea base de ciberseguridad, de acuerdo con la norma CNO 1960.',
-    icon: 'fas fa-shield-alt',
-    visible: false,
-  },
-];
-
-/* Array para proyectos destacados */
-proyectoText = [
-  {
-    title: 'Cliente: Siemens Energy S.A.S',
-    location: 'Ubicación: Subestación Copey – Copey, Cesar',
-    solution: `Tipo de solución: Implementación de señales en el sistema SICAM PAS,
-      integración de señales para enclavamientos en los seccionadores de
-      transferencia y de la barra 2, junto con la incorporación de señalización de fallas
-      a través de repetidores.  
-      Modificación en lógicas de control de relés SIPROTEC 4 para integración a S/E
-      Existente de nuevas bahías.`,
-    impact: `Impacto: Garantizar que la lógica operativa de la subestación se ejecute
-      conforme a lo programado en el software DIGSI, asegurando así la confiabilidad
-      y seguridad en la operación del sistema eléctrico.`,
-    image: '/img/siemens.png'
-  },
-  {
-    title: 'Cliente: Grupo LAREIF (PCH’s construidas por grupo HMV en Antioquia)',
-    location: 'Ubicación: Antioquia, Colombia',
-    solution: `Tipo de solución: Mantenimiento preventivo de PLCs, migración de sistemas
-      HMI/PLC y SCADA.`,
-    impact: `Impacto: Reducción de fallas en el sistema y mayor
-      visibilidad de datos operativos en tiempo real.`,
-    image: '/img/isagen.jpeg'
-  },
-  {
-    title: 'Cliente: Negratín Colombia SAS',
-    location: 'Ubicación: Subestación Transelca, Sabanalarga.',
-    solution: `Tipo de solución: Integración de variables de medición de tensiones y
-      corrientes para limitación de potencia en Bosques Solares de Bolívar (ISAGEN).
-      Integración de comunicaciones entre subestaciones y habilitación del
-      protocolo IEC104 para integración con sistemas de monitoreo.`,
-    impact: `Impacto: Mejora en la confiabilidad de la operación de los parques por
-      limitaciones de potencia en pequeñas centrales según normatividad
-      colombiana.`,
-    image: '/img/negratin.jpg'
-  },
-  {
-    title: 'Cliente: Negratín Colombia SAS',
-    location: 'Ubicación: Subestación Elevadora – Sabanalarga, Atlántico.',
-    solution: `Tipo de solución: Migración de RTU y adecuación de señalización en sistema
-      SCADA.`,
-    impact: `Impacto: Se realizó la migración de los equipos SICAM A8000 para mejorar la
-      confiabilidad del sistema. Se integraron y validaron las señalizaciones a Nivel 2
-      en el SCADA actualizando las configuraciones necesarias para su correcta
-      operación.`,
-    image: '/img/negratin.jpg'
-  }
-];
-
-/* Array para las inagenes del carrusel */
-
-images = [
-    { src: '/img/foto1.jpeg', alt: 'Foto 1', title: ' Integración de señales nivel 2 en S/E Copey.' },
-    { src: '/img/foto2.jpeg', alt: 'Foto 2', title: 'S/E Elevadora Sabanalarga.' },
-    { src: '/img/foto3.jpeg', alt: 'Foto 3', title: 'Visita a Bosques Solares de Bolívar (ISAGEN).' },
-    { src: '/img/foto4.jpeg', alt: 'Foto 4', title: 'Infraestructura solar en operación – Bosques Solares de Bolívar (ISAGEN).' },
-    { src: '/img/foto5.jpeg', alt: 'Foto 5', title: 'Supervisión y verificación de sistema de control – PCH San Bartolomé.'},
-    { src: '/img/foto6.jpeg', alt: 'Foto 6', title: 'S/E de transmisión.' },
-    { src: '/img/foto7.jpeg', alt: 'Foto 7', title: 'Capacitación Partners Grid +, Casa matriz Siemens.' },
-    { src: '/img/foto8.jpeg', alt: 'Foto 8', title: ' Capacitación Partners Grid +, Casa matriz Siemens. ' },
-    { src: '/img/foto9.jpeg', alt: 'Foto 9', title: 'Digital Substation, evento de Partners Grid + en Casa matriz Siemens.' },
-    { src: '/img/foto10.jpeg', alt: 'Foto 10', title: 'Capacitación Partners Grid +, Casa matriz Siemens.' },
-    { src: '/img/foto11.jpeg', alt: 'Foto 11', title: 'Capacitación Partners Grid +, Casa matriz Siemens.' },
-    { src: '/img/foto12.jpeg', alt: 'Foto 12', title: 'Distribution Automation, evento de Partners Grid + en Casa matriz Siemens.' },
-    { src: '/img/foto13.jpeg', alt: 'Foto 13', title: 'Gestión y supervisión en planta solar.' },
-    { src: '/img/foto14.jpeg', alt: 'Foto 14', title: 'Integración de señales nivel 2 en S/E Elevadora Sabanalarga.' },
-    { src: '/img/foto15.jpeg', alt: 'Foto 15', title: 'Visita técnico- comercial PCH San Bartolomé y Oibita.' },
-    { src: '/img/foto16.jpeg', alt: 'Foto 16', title: ' Revisión protecciones SIPROTEC 5.' }
-  ];
-
-  marcas = [
-    { src: '/img/siemens.png', alt: 'Siemens', title: 'Siemens' },
-    { src: '/img/rockwell.jpg', alt: 'Isagen', title: 'Isagen' },
-    { src: '/img/mitsubishi.jpg', alt: 'Negratin', title: 'Negratin' },
-    { src: '/img/wonderware.png', alt: 'Negratin', title: 'Negratin' },
-    { src: '/img/rittal.jpg', alt: 'Negratin', title: 'Negratin' },
-    { src: '/img/maper.png', alt: 'Negratin', title: 'Negratin' },
-    { src: '/img/metalandes.jpg', alt: 'Negratin', title: 'Negratin' }
-  ];
-
-
-   /* Variables de los titulos y textos de la card energia*/
-
-  bloqueTitulo: string =
-    '¿De qué forma los Sistemas de Gestión Energética en Plantas Industriales impulsan el crecimiento de la empresa?';
-
-  bloqueTexto: string =
-    'Todos los sistemas de gestión de energía mantienen al día las necesidades cambiantes de los sistemas eléctricos, manejando cargas cada vez más complejas y sensibles. Estos sistemas inteligentes son fundamentales para cumplir con estos retos, permitiendo así responder de forma más rápida a las necesidades energéticas optimizando la calidad y mitigando los riesgos.';
-
-  bloqueImagen: string = '/img/energia.jpeg';
-
-
-/* Array de los logros */
-
-logrosData = {
-  title: 'Logros, Reconocimientos y Desarrollos Tecnológicos Relevantes:',
-  intro: `Nuestro equipo se distingue por su certificación y experiencia avanzada en la 
-          configuración y programación de equipos y sistemas clave del sector energético, tales como:`,
-
-  items: [
-    'Equipos Siemens: SIPROTEC, SICAM PAS, SICAM S8000, SICAM A8000, WinCC SCC, RUGGEDCOM, SICAM PPC Compact.',
-    'Dominio en la configuración y optimización de protocolos especializados para el sector energético, incluyendo IEC 61850 (GOOSE y MMS), Modbus RTU y TCP/IP, DNP3, e IEC 60870-5-104.',
-    'Diseño y configuración de topologías de red de alta disponibilidad y seguridad, como RSTP, HSR y PRP, integrando RedBox y switches industriales avanzados.'
-  ],
-
-  conclusion: `Estos logros nos permiten ofrecer soluciones que no solo resuelven los desafíos 
-              actuales de nuestros clientes, sino que también los preparan para las exigencias futuras del sector energético.`
-};
-
-
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Podrías invocar onScroll al iniciar para forzar el chequeo inicial:
-    setTimeout(() => this.onScroll(), 0);
-  }
+  this.http.get<any>('http://localhost:3000/elico-backend/energia/1').subscribe({
+    next: (data) => {
+      console.log('✅ Data recibida:', data);
+
+      this.contenido = {
+        titulo: data.contenido_titulo,
+        parrafos: data.contenido_parrafos,
+        botonTexto: data.contenido_boton_texto,
+        botonUrl: data.contenido_boton_url
+      };
+
+      this.beneficios = {
+        titulo: data.beneficios_titulo,
+        items: data.beneficios_items
+      };
+
+      this.serviciosCards = data.servicios_cards;
+
+      this.proyectosDestacados = {
+        titulo: data.proyectos_destacados_titulo,
+        items: data.proyectos_destacados_items
+      };
+
+      this.bloqueTitulo = data.bloque_titulo;
+      this.bloqueTexto = data.bloque_texto;
+      this.bloqueImagen = data.bloque_imagen;
+
+      this.images = data.images;
+      this.marcas = data.marcas;
+
+      this.logrosData = {
+        title: data.logros_titulo,
+        intro: data.logros_intro,
+        items: data.logros_items,
+        conclusion: data.logros_conclusion
+      };
+    },
+    error: (error) => {
+      console.error('❌ Error al cargar datos:', error);
+    }
+  });
+}
+
 
   @HostListener('window:scroll', [])
   onScroll(): void {
@@ -178,9 +79,10 @@ logrosData = {
       if (rect.top < window.innerHeight - 100) {
         this.serviciosCards[index].visible = true;
       }
-
-      
     });
-    
+  }
+
+  onSlide(event: any) {
+    this.activeIndex = event.to;
   }
 }

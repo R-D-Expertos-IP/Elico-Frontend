@@ -1,0 +1,97 @@
+<section class="timeline-section">
+  <!-- Unidad de Digitalización -->
+  <h2 class="gradient-title text-center mb-0">
+    {{ unidadDigitalizacionTitle }}
+  </h2>
+  <div class="container my-2">
+    <div class="card rounded-4">
+      <div class="card-body">
+        <div class="mx-auto text-center text-muted content-text">
+          <p
+            *ngFor="let paragraph of unidadDigitalizacionParagraphs"
+            class="mb-3 my-2"
+          >
+            {{ paragraph }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proyectos destacados -->
+  <div class="container-fluid my-5">
+    <h2 class="gradient-title text-center mb-0">
+      {{ proyectosTitle }}
+    </h2>
+    <div class="row g-4">
+      <div class="col-md-3" *ngFor="let proyecto of proyectoText">
+        <div class="card h-100">
+          <img
+            [src]="proyecto.image"
+            alt="Proyecto destacado"
+            class="card-img-top img-fluid"
+            style="max-height: 250px; object-fit: contain;"
+          />
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-primary">
+              {{ proyecto.title }}
+            </h5>
+            <p class="card-text mb-2">
+              <strong>{{ proyecto.location }}</strong>
+            </p>
+            <p class="card-text">
+              <strong>Solución:</strong> {{ proyecto.solution }}
+            </p>
+            <p class="card-text">
+              <strong>Impacto:</strong> {{ proyecto.impact }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logros -->
+  <div class="container my-6">
+    <h2 class="gradient-title mb-0">
+      {{ logrosData.title }}
+    </h2>
+    <div class="card p-4 rounded-4 my-0">
+      <div class="card-body">
+        <p class="lead text-muted my-0">
+          {{ logrosData.intro }}
+        </p>
+        <ul class="list-unstyled">
+          <li
+            *ngFor="let item of logrosData.items"
+            class="d-flex align-items-start mb-2"
+          >
+            <i class="fa-solid fa-check text-primary me-2 mt-1"></i>
+            <span class="text-muted">{{ item }}</span>
+          </li>
+        </ul>
+        <br />
+        <p class="lead text-muted">
+          {{ logrosData.conclusion }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transformamos datos -->
+  <div class="container my-5">
+    <h2 class="gradient-title text-center mb-0">
+      {{ transformamosTitle }}
+    </h2>
+    <div class="card rounded-4">
+      <div class="card-body">
+        <p
+          class="text-center text-muted mx-auto mb-0"
+          style="max-width: 1000px;"
+        >
+          {{ transformamosParagraph }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

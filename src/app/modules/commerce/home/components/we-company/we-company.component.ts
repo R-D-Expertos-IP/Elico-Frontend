@@ -1,4 +1,4 @@
-import {
+/* import {
   Component,
   ElementRef,
   HostListener,
@@ -108,6 +108,13 @@ timelineData = [
   },
 ];
 
+cardAboutTexts: string[] = [
+  `Elico inició sus operaciones en 1979 y se consolidó formalmente en el 2013 como Elico Group S.A.S.`,
+  `Somos un integrador de sistemas en automatización industrial con más de 46 años de experiencia...`,
+  `Nuestra oferta de productos y servicios atiende a los clientes en distintos sectores.`
+];
+
+
 
  certificadoCards = [
     {
@@ -142,7 +149,7 @@ timelineData = [
     }
   ];
 /* Funsion que expande la card de "Leer más" */
-   toggleExpand(card: any) {
+  /*  toggleExpand(card: any) {
     card.expanded = !card.expanded;
     card.descDisplayed = card.expanded
       ? card.descFull
@@ -243,5 +250,139 @@ onScroll(): void {
     });
   }
 }
+ */
 
 
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  HostListener,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
+import { WeCompanyService, NosotrosData } from './services/we-company.service';
+
+@Component({
+  selector: 'app-we-company',
+  templateUrl: './we-company.component.html',
+  styleUrls: ['./we-company.component.css']
+})
+export class WeCompanyComponent implements OnInit, AfterViewInit {
+
+  conoceText = 'Conoce a Elico Group';
+  nuestrasText = 'Nuestras habilidades y experiencia';
+  historiaText = 'Nuestra Historia';
+  documentosText = 'Documentos Técnicos';
+
+  infocards: any[] = [];
+  timelineData: any[] = [];
+  certificadoCards: any[] = [];
+  cards: any[] = [];
+  cardAboutTexts: string[] = [];
+
+  @ViewChild('scrollContainer') scrollContainer!: ElementRef<HTMLDivElement>;
+  private barrasAnimadas = false;
+
+  constructor(private weCompanyService: WeCompanyService) {}
+
+  ngOnInit(): void {
+    this.weCompanyService.getNosotros().subscribe((data: NosotrosData) => {
+      this.infocards = data.infocards.map(item => ({ ...item, visible: false }));
+      this.timelineData = data.timelineData.map(item => ({ ...item, visible: false }));
+      this.certificadoCards = data.certificadoCards;
+      this.cards = data.cards;
+      this.cardAboutTexts = data.cardAboutTexts;
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.onScroll();
+    this.autoScroll();
+    setTimeout(() => this.initBarObserver(), 0);
+  }
+
+  toggleExpand(card: any): void {
+    card.expanded = !card.expanded;
+    card.descDisplayed = card.expanded
+      ? card.descFull
+      : card.descShort;
+  }
+
+  autoScroll(): void {
+    if (!this.scrollContainer) return;
+    const scrollEl = this.scrollContainer.nativeElement;
+    let scrollAmount = 0;
+    const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+
+    const interval = setInterval(() => {
+      if (scrollAmount >= maxScroll) {
+        clearInterval(interval);
+      } else {
+        scrollEl.scrollTop += 1;
+        scrollAmount += 1;
+      }
+    }, 20);
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const elements = document.querySelectorAll('.timeline-item');
+
+    elements.forEach((el, index) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        if (this.infocards[index]) {
+          if (!this.infocards[index].visible) {
+            this.infocards[index].visible = true;
+          }
+        } else if (this.timelineData[index - this.infocards.length]) {
+          if (!this.timelineData[index - this.infocards.length].visible) {
+            this.timelineData[index - this.infocards.length].visible = true;
+          }
+        }
+      }
+    });
+  }
+
+  initBarObserver(): void {
+    const barsSection = document.querySelector('.skills-bars');
+    if (!barsSection) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.barrasAnimadas) {
+          this.barrasAnimadas = true;
+          this.animarBarras();
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(barsSection);
+  }
+
+  animarBarras(): void {
+    const bars = document.querySelectorAll<HTMLElement>('.progress-bar');
+
+    bars.forEach(bar => {
+      const innerBar = bar.querySelector<HTMLElement>('.bar');
+      const textSpan = innerBar?.querySelector<HTMLElement>('.bar-value');
+      const target = parseInt(textSpan?.dataset.value ?? '0');
+      const width = bar.getAttribute('data-width');
+
+      if (innerBar && textSpan) {
+        innerBar.classList.add('animado');
+        innerBar.style.transition = 'width 2s ease-in-out';
+        innerBar.style.width = width ?? '0%';
+
+        let count = 0;
+        const interval = setInterval(() => {
+          textSpan.innerText = count.toString();
+          count++;
+          if (count > target) clearInterval(interval);
+        }, 20);
+      }
+    });
+  }
+}
