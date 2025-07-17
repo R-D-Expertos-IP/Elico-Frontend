@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ContactService } from './service/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -8,117 +9,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
-  contactText = 'Trabaja con Nosotros';
+  contactText = '';
+  formFields: any[] = [];
 
-  // Array de campos para generar el HTML dinámicamente
-  formFields = [
-    {
-      name: 'firstName',
-      label: 'Nombre',
-      icon: 'fa-user',
-      type: 'text',
-      required: true,
-      col: '6',
-    },
-    {
-      name: 'lastName',
-      label: 'Apellidos',
-      icon: 'fa-user',
-      type: 'text',
-      required: true,
-      col: '6',
-    },
-    {
-      name: 'documentType',
-      label: 'Tipo de Identificación',
-      icon: 'fa-id-card',
-      type: 'select',
-      options: [
-        { value: '', text: 'Seleccione una opción' },
-        { value: 'CC', text: 'Cédula de ciudadanía' },
-        { value: 'CE', text: 'Cédula de extranjería' },
-        { value: 'NIT', text: 'NIT' },
-        { value: 'Pasaporte', text: 'Pasaporte' },
-      ],
-      required: true,
-      col: '6',
-    },
-    {
-      name: 'documentNumber',
-      label: 'Número de Identificación',
-      icon: 'fa-hashtag',
-      type: 'text',
-      required: true,
-      col: '6',
-    },
-    {
-      name: 'company',
-      label: 'Empresa',
-      icon: 'fa-building',
-      type: 'text',
-      required: true,
-      col: '6',
-    },
-    {
-      name: 'position',
-      label: 'Cargo',
-      icon: 'fa-briefcase',
-      type: 'text',
-      required: true,
-      col: '6',
-    },
-    {
-      name: 'phone',
-      label: 'Celular',
-      icon: 'fa-phone',
-      type: 'text',
-      required: true,
-      col: '6',
-    },
-    {
-      name: 'interestArea',
-      label: 'Área de Interés',
-      icon: 'fa-layer-group',
-      type: 'text',
-      required: true,
-      col: '6',
-    },
-    {
-      name: 'email',
-      label: 'Correo Electrónico',
-      icon: 'fa-envelope',
-      type: 'email',
-      required: true,
-      col: '12',
-    },
-    {
-      name: 'reasonVisit',
-      label: '¿Por qué nos visita?',
-      icon: 'fa-comment-dots',
-      type: 'textarea',
-      required: true,
-      col: '12',
-    }
-  ];
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private contactService: ContactService) {}
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({});
-    
-    // Dynamically add controls
-    this.formFields.forEach(field => {
-      const validators = field.required
-        ? (field.type === 'email'
-            ? [Validators.required, Validators.email]
-            : [Validators.required])
-        : [];
-      this.contactForm.addControl(field.name, this.fb.control('', validators));
-    });
 
-    this.contactForm.addControl('cv', this.fb.control(null, Validators.required));
-    this.contactForm.addControl('termsConditions', this.fb.control(false, Validators.requiredTrue));
-    this.contactForm.addControl('receiveAds', this.fb.control(false));
+    this.contactService.getFormConfig().subscribe({
+      next: (config) => {
+        this.contactText = config.titulo_contact;
+        this.formFields = config.campos_contact;
+
+        this.formFields.forEach(field => {
+          const validators = field.required
+            ? (field.type === 'email'
+                ? [Validators.required, Validators.email]
+                : [Validators.required])
+            : [];
+          this.contactForm.addControl(field.name, this.fb.control('', validators));
+        });
+
+        this.contactForm.addControl('cv', this.fb.control(null, Validators.required));
+        this.contactForm.addControl('termsConditions', this.fb.control(false, Validators.requiredTrue));
+        this.contactForm.addControl('receiveAds', this.fb.control(false));
+      },
+      error: (err) => {
+        console.error('Error al cargar formulario:', err);
+      }
+    });
   }
 
   chunkFields(fields: any[], size: number): any[][] {
@@ -143,6 +63,7 @@ export class ContactComponent implements OnInit {
       this.contactForm.markAllAsTouched();
       return;
     }
-    console.log('Formulario enviado:', this.contactForm.value);
+
+    console.log('Datos digitados (no se guardan en BD):', this.contactForm.value);
   }
 }

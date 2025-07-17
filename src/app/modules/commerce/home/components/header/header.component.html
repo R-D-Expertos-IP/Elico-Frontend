@@ -4,49 +4,35 @@
       <img src="/img/logoicono.png" width="40" height="auto" class="d-inline-block align-top" alt="">
       <span class="span1">Elico<span class="span_2">Group</span></span>
     </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fa-solid fa-bars" style="color: #000000;"></i>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/commerce/home/start']">Inicio</a>
-        </li>
+        <ng-container *ngFor="let item of menuItems">
+          <!-- Submenú -->
+          <li class="nav-item dropdown" *ngIf="item.children; else simpleItem">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{ item.label }}
+            </a>
+            <div class="dropdown-menu custom-dropdown">
+              <a class="dropdown-item" *ngFor="let child of item.children" [routerLink]="[child.route]">
+                {{ child.label }}
+              </a>
+            </div>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/commerce/home/we-company']">Nosotros</a>
-        </li>
-
-        <!-- Submenú Servicios mejorado -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Soluciones
-          </a>
-          <div class="dropdown-menu custom-dropdown" aria-labelledby="serviciosDropdown">
-            <a class="dropdown-item" [routerLink]="['/servicios/diseno-web']">Generalización</a>
-            <a class="dropdown-item" [routerLink]="['/commerce/home/energy']">Energia</a>
-            <a class="dropdown-item" [routerLink]="['/servicios/branding']">Automatización</a>
-            <a class="dropdown-item" [routerLink]="['/commerce/home/digitization']">Digitalización</a>
-          </div>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/commerce/home/blog']">Blog</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/commerce/home/resources']">Recursos</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/commerce/home/contact']">Contacto</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/commerce/home/pqrsf']">PQRSF</a>
-        </li>
+          <!-- Ítem simple -->
+          <ng-template #simpleItem>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="[item.route]">{{ item.label }}</a>
+            </li>
+          </ng-template>
+        </ng-container>
       </ul>
     </div>
   </div>

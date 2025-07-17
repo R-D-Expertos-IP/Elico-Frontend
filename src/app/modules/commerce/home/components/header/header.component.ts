@@ -1,37 +1,39 @@
-import { Component } from '@angular/core';
-// import { BsModalRef } from 'ngx-bootstrap/modal';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { firstValueFrom } from 'rxjs';
 import { ErrorService } from '../../../../../shared/services/error.service';
+import { HeaderService } from './services/header.service';
 
+interface MenuItem {
+  label: string;
+  route?: string;
+  children?: MenuItem[];
+}
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-  
-
-
-  
-
+export class HeaderComponent implements OnInit {
+  menuItems: MenuItem[] = [];
 
   constructor(
-    // public bsModalRef: BsModalRef,
     public toast: ToastrService,
     private errorService: ErrorService,
-  ) {
+    private headerService: HeaderService
+  ) {}
 
-  }
-
-  /**
-   * metodo de carga de datos de angular
-   */
   ngOnInit(): void {
-   
+    this.cargarCabeceraDesdeBD();
   }
 
-
+  cargarCabeceraDesdeBD(): void {
+    this.headerService.getHeaderMenu().subscribe({
+      next: (res) => {
+        this.menuItems = res.menu_items;
+      },
+      error: (err) => {
+      },
+    });
+  }
 }
