@@ -7,13 +7,13 @@ import { BlogService } from './service/blog.service';
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
-  blogTittle = '';
+  blogTitle = '';
 
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
     this.blogService.getBlog().subscribe((data) => {
-      if (data.length) this.blogTittle = data[0].title;
+      if (data.length) this.blogTitle = data[0].title;
     });
   }
 }

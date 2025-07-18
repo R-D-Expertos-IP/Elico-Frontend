@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
         this.menuItems = res.menu_items;
       },
       error: (err) => {
+
       },
     });
   }

@@ -1,74 +1,57 @@
-<!-- CARRUSEL DEL HOME -->
-<div id="carouselExampleIndicators" class="carousel slide" style="margin-top: 5rem;" data-ride="carousel"
-  data-interval="4000">
+<!-- CARRUSEL -->
+<div *ngIf="carrusel.length > 0" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/img/prueba1.jpg" class="d-block w-100" alt="...">
+    <div class="carousel-item" *ngFor="let slide of carrusel; let i = index" [class.active]="i === 0">
+      <img [src]="slide.img" class="d-block w-100" [alt]="slide.alt || ''" />
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Anterior</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Siguiente</span>
-  </a>
 </div>
 
 <!-- SOLUCIONES CARDS -->
-
 <div class="cards-container">
   <div class="row justify-content-center col-md-12">
     <h2 class="gradient-title mb-0">{{ tituloSoluciones }}</h2>
   </div>
 
-  <div
-    class="flip-card rounded"
-    *ngFor="let card of solucionesCards"
-  >
-    <div class="flip-card-inner">
-      <div
-        class="flip-card-front"
-        [ngClass]="card.frontBgClass"
-      >
-        <i [class]="card.frontIcon"></i>
-        {{ card.title }}
-      </div>
-      <div class="flip-card-back">
-        <p>{{ card.backText }}</p>
-        <button
-          class="conocenos-btn"
-          [attr.onclick]="'location.href=\'' + card.link + '\''"
-        >
-          Ver Servicio
-        </button>
+  <div class="row justify-content-center gap-4">
+    <div class="flip-card rounded" *ngFor="let card of solucionesCards">
+      <div class="flip-card-inner">
+        <!-- Lado frontal -->
+        <div class="flip-card-front simple-front d-flex flex-column align-items-center justify-content-center">
+          <i *ngIf="card.frontIcon" class="{{ card.frontIcon }} fa-3x mb-3"></i>
+          <p class="fs-5 fw-bold text-center">{{ card.title }}</p>
+        </div>
+
+        <!-- Lado trasero -->
+        <div class="flip-card-back d-flex flex-column justify-content-center align-items-center text-center">
+          <p class="mb-3">{{ card.backText }}</p>
+          <button class="conocenos-btn" (click)="goToServicio(card.link)">
+            Ver Servicio
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FIN SOLUCIONES CARDS -->
-
-
 <!-- TEXTO Y VIDEO -->
-
 <div class="row justify-content-center mb-4 gap-4 flex-wrap m-0">
   <div class="card shadow p-2 col-md-4">
     <h2 class="gradient-title">{{ tituloPrincipal }}</h2>
     <div class="card-texto text-left p-3">
-      <p class="">{{ descripcionPrincipal }}</p>
+      <p>{{ descripcionPrincipal }}</p>
       <div class="btn-wrapper">
         <button class="conocenos-btn" (click)="goToNosotros()">Conócenos</button>
       </div>
     </div>
   </div>
   <div class="card col-md-5">
-    <iframe class="responsive-iframe-container" src="https://www.youtube.com/embed/lgrtGDwxJ-M?si=rSmZ24dnRd6gBlGV" title="Automatización Industrial"
+    <iframe
+      class="responsive-iframe-container"
+      src="https://www.youtube.com/embed/lgrtGDwxJ-M?si=rSmZ24dnRd6gBlGV"
+      title="Automatización Industrial"
       frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
+      allowfullscreen
+    ></iframe>
   </div>
 </div>
-
-<!-- FIN TEXTO Y VIDEO -->

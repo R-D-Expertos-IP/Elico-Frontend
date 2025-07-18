@@ -4,63 +4,57 @@ import { PqrsfService } from './services/pqrsf.service';
 
 @Component({
   selector: 'app-pqrsf',
-  templateUrl: './pqrsf.component.html',
-  styleUrls: ['./pqrsf.component.css'],
+  templateUrl: './pqrsf.component.html'
 })
 export class PqrsfComponent implements OnInit {
-  pqrsText = '';
-  contactForm!: FormGroup;
-  formFields: any[] = [];
+  form!: FormGroup;
+  campos: any[] = [];
 
   constructor(private fb: FormBuilder, private pqrsfService: PqrsfService) {}
 
   ngOnInit(): void {
-    this.contactForm = this.fb.group({});
-
-    this.pqrsfService.getFormConfig().subscribe({
-      next: (config) => {
-        this.pqrsText = config.titulo_pqrsf;
-        this.formFields = config.campos_pqrsf;
-
-        this.formFields.forEach(field => {
-          const validators = field.required
-            ? (field.type === 'email'
-                ? [Validators.required, Validators.email]
-                : [Validators.required])
-            : [];
-          this.contactForm.addControl(field.name, this.fb.control('', validators));
-        });
-
-        this.contactForm.addControl('accept', this.fb.control(null, Validators.required));
+    this.pqrsfService.getCampos().subscribe({
+      next: (data) => {
+        this.campos = data;
+        this.crearFormulario();
       },
       error: (err) => {
-        console.error('Error al cargar PQRSF:', err);
+        console.error('Error al cargar campos:', err);
       }
     });
   }
 
-  chunkFields(fields: any[], size: number): any[][] {
-    const result = [];
-    for (let i = 0; i < fields.length; i += size) {
-      result.push(fields.slice(i, i + size));
-    }
-    return result;
+  crearFormulario(): void {
+    const group: any = {};
+
+    this.campos.forEach((campo) => {
+      group[campo.name] = campo.required
+        ? [null, Validators.required]
+        : [null];
+    });
+
+    group['accept'] = [null, Validators.required];
+    this.form = this.fb.group(group);
   }
 
-  onRadioClick(option: string): void {
-    const currentValue = this.contactForm.get('accept')?.value;
-    if (currentValue === option) {
-      this.contactForm.get('accept')?.setValue(null);
+  onSubmit(): void {
+    if (this.form.valid) {
+      console.log('Datos enviados:', this.form.value);
     } else {
-      this.contactForm.get('accept')?.setValue(option);
+      this.form.markAllAsTouched();
     }
   }
 
-  submitForm() {
-    if (this.contactForm.invalid) {
-      this.contactForm.markAllAsTouched();
-      return;
+  chunkFields(fields: any[], chunkSize: number): any[][] {
+    const chunks = [];
+    for (let i = 0; i < fields.length; i += chunkSize) {
+      chunks.push(fields.slice(i, i + chunkSize));
     }
-    console.log('Formulario PQRSF enviado:', this.contactForm.value);
+    return chunks;
+  }
+
+  onRadioClick(value: string): void {
+    this.form.get('accept')?.setValue(value);
+    this.form.get('accept')?.markAsTouched();
   }
 }
